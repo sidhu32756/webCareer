@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore top 20 in-demand careers with strong growth potential, good salaries, and detailed career information.">
+  <meta name="keywords" content="top jobs, careers 2025, job opportunities, career guidance, high demand jobs">
+  <title>Top Jobs & Careers — CareerPath</title>
+  <link rel="stylesheet" href="fed.css">
+  <style>
+    /* Global / reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #222; background: #f7f9fb; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+    /* Page container */
+    .page {
+      max-width: 1180px;
+      margin: 36px auto;
+      padding: 24px;
+    }
+
+    /* Top nav / back button */
+    .top-row {
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+    .back-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:10px;
+      border:1px solid rgba(15, 95, 255, 0.12);
+      background: #fff;
+      color: #000;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+    }
+
+    /* Page title & subtitle */
+    .page-header {
+      text-align:center;
+      margin-bottom:18px;
+    }
+    .page-header h1 {
+      font-size:28px;
+      font-weight:700;
+      color:#0f1724;
+      margin-bottom:8px;
+    }
+    .page-header p {
+      color:#6b7280;
+      font-size:15px;
+    }
+
+    /* Job card grid */
+    .job-cards {
+       display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    /* Job card */
+    .job-card {
+      background: linear-gradient(180deg,#ffffff,#fbfdff);
+      border-radius:14px;
+      padding:20px;
+      border:1px solid rgba(15, 95, 255, 0.06);
+      box-shadow: 0 6px 20px rgba(15, 95, 255, 0.04);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      transition: all 0.3s ease;
+    }
+
+    .job-card:hover {
+      box-shadow: 0 8px 24px rgba(15, 95, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .job-card h3 {
+      margin-top: 0;
+      color: #0f5fff;
+      font-size: 16px;
+      font-weight:700;
+      line-height: 1.4;
+    }
+    .job-card p {
+      margin: 6px 0;
+      color: #555;
+      line-height: 1.5;
+      font-size: 13px;
+      flex-grow: 1;
+    }
+    .job-number {
+      display: inline-block;
+      background: linear-gradient(180deg,#1f6feb,#0f5fff);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    /* Job card link */
+    .job-card a {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 14px;
+      border-radius:8px;
+      background: linear-gradient(180deg,#1f6feb,#0f5fff);
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:13px;
+      margin-top:8px;
+      width:fit-content;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(15, 95, 255, 0.2);
+      align-self: flex-start;
+    }
+    .job-card a:hover {
+      background: linear-gradient(180deg,#0f5fff,#0a3fb8);
+      box-shadow: 0 4px 12px rgba(15, 95, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* Image styling */
+    .job-image {
+      margin:16px 0;
+      text-align:center;
+    }
+    .job-image img {
+      max-width:100%;
+      height:auto;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(15, 95, 255, 0.08);
+    }
+
+    /* Footer section */
+    .footer-section {
+      margin-top:32px;
+      padding:20px;
+      background:linear-gradient(180deg,#eef6ff,#f7fbff);
+      border-radius:14px;
+      border:1px solid rgba(15, 95, 255, 0.06);
+    }
+    .footer-section h2 {
+      font-size:20px;
+      color:#0f1724;
+      margin-bottom:12px;
+    }
+    .footer-section ul {
+      font-size:15px;
+      line-height:1.8;
+      color:#374151;
+      padding-left:20px;
+    }
+    .footer-section li {
+      margin-bottom:8px;
+    }
+    .footer-section strong {
+      color:#0f1724;
+      font-weight:700;
+    }
+
+    /* Footer */
+    footer {
+      margin-top:28px;
+      color:#666;
+      font-size:14px;
+      text-align:center;
+      padding:20px;
+    }
+    footer p {
+      margin:8px 0;
+    }
+    footer a {
+      color:#0f5fff;
+      text-decoration:none;
+      font-weight:600;
+    }
+    footer a:hover {
+      text-decoration:underline;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1100px) {
+      .page {
+        max-width: 100%;
+        padding: 16px;
+      }
+
+      .job-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .top-row {
+        gap: 10px;
+      }
+
+      .page {
+        margin: 16px auto;
+        padding: 12px;
+      }
+
+      .page-header {
+        margin-bottom: 24px;
+      }
+
+      .page-header h1 {
+        font-size: 20px;
+      }
+
+      .page-header p {
+        font-size: 14px;
+      }
+
+      .job-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .job-card {
+        padding: 16px;
+      }
+
+      .job-card h3 {
+        font-size: 15px;
+      }
+
+      .job-card p {
+        font-size: 12px;
+      }
+
+      .job-card a {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+
+      .footer-section {
+        padding: 16px;
+      }
+
+      .footer-section h2 {
+        font-size: 16px;
+      }
+
+      .footer-section ul {
+        font-size: 13px;
+      }
+    }
+
+    /* Accessibility focus states */
+    .back-btn:focus, .job-card a:focus {
+      outline: 2px solid rgba(15, 95, 255, 0.3);
+      outline-offset:2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-row">
+      <a href="fed.html#dash-container" class="back-btn">← Back</a>
+    </div>
+
+    <div class="page-header">
+      <h1>Top Jobs & Careers in 2025</h1>
+      <p>Explore the top career options with strong demand, good salaries, and growth potential across all industries.</p>
+    </div>
+
+    <main>
+      <section>
+        <div class="job-image">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=400&fit=crop" alt="Healthcare professionals working together" loading="lazy">
+        </div>
+
+        <div class="job-cards">
+
+        </div>
+
+        <div class="job-cards">
+          <div class="job-card">
+            <span class="job-number">1</span>
+            <h3>Doctor / Physician / Surgeon</h3>
+            <p><strong>Overview:</strong> Doctors, physicians & surgeons are among the most respected and high-demand professionals. They diagnose and treat illnesses, work in hospitals, clinics, and research.</p>
+            <p><strong>Why Choose:</strong> This job brings responsibility, social respect, and fairly stable income (depending on specialization).</p>
+            <p><strong>Skills Required:</strong> Medical knowledge, problem-solving, compassion, attention to detail, communication</p>
+            <p><strong>Education Path:</strong> MBBS / MD / Specialization courses</p>
+            <a href="https://www.indeed.com/q-Medical-Doctor-Physician-jobs.html" target="_blank">→ View Medical Jobs on Indeed</a>
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">2</span>
+            <h3>Nurse / Caregiver / Health-care Worker</h3>
+            <p><strong>Overview:</strong> Nurses and caregivers are constantly needed — in hospitals, clinics, elder-care, and community settings. Especially as demand in healthcare rises.</p>
+            <p><strong>Why Choose:</strong> A stable and socially useful career for those who want to help people.</p>
+            <p><strong>Skills Required:</strong> Empathy, patience, medical knowledge, teamwork, physical stamina</p>
+            <p><strong>Education Path:</strong> BSc Nursing / Diploma in Nursing / Certification programs</p>
+            <a href="https://www.indeed.com/q-Registered-Nurse-RN-jobs.html" target="_blank">→ View Nursing Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop" alt="Nurse providing patient care" loading="lazy" />
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">3</span>
+            <h3>Software Developer / Software Engineer / Full-Stack / IT Developer</h3>
+            <p><strong>Overview:</strong> With tech growth, software development is among the top jobs — high demand in India and worldwide. Roles include backend, frontend, full-stack, mobile-app development.</p>
+            <p><strong>Why Choose:</strong> Good salaries and strong growth potential. Opportunities across all industries.</p>
+            <p><strong>Skills Required:</strong> Programming (Java, Python, C++), problem-solving, debugging, version control, system design</p>
+            <p><strong>Education Path:</strong> B.Tech / BCA / Bootcamps / Self-learning + Portfolio</p>
+            <a href="https://www.indeed.com/q-Software-Engineer-Full-Stack-jobs.html" target="_blank">→ View Software Engineering Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800" alt="Software Developer at Work">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">4</span>
+            <h3>Data Scientist / Data Analyst / AI-ML Engineer</h3>
+            <p><strong>Overview:</strong> As businesses & industries use more data, Data Scientists and AI/ML Engineers are in high demand. This is a rapidly growing field.</p>
+            <p><strong>Why Choose:</strong> Strong growth potential, good pay, and opportunities across sectors (tech, finance, health, e-commerce).</p>
+            <p><strong>Skills Required:</strong> Python, SQL, statistics, machine learning, data visualization, business acumen</p>
+            <p><strong>Education Path:</strong> MSc Data Science / B.Tech with specialization / Online certifications</p>
+            <a href="https://www.indeed.com/q-Data-Scientist-Machine-Learning-jobs.html" target="_blank">→ View Data Science Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Data scientist analyzing charts and graphs" loading="lazy">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">5</span>
+            <h3>Cybersecurity / Information Security Expert</h3>
+            <p><strong>Overview:</strong> With digital growth, demand for professionals securing data and networks is rising fast. Organizations need strong cybersecurity teams.</p>
+            <p><strong>Why Choose:</strong> Suited for those interested in tech + security — offers stable, well-paid roles with high relevance.</p>
+            <p><strong>Skills Required:</strong> Network security, ethical hacking, cryptography, threat analysis, compliance knowledge</p>
+            <p><strong>Education Path:</strong> BSc IT / Cybersecurity certifications (CISSP, CEH, Security+)</p>
+            <a href="https://www.indeed.com/q-Information-Security-Analyst-jobs.html" target="_blank">→ View Cybersecurity Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=400&fit=crop" alt="Cybersecurity professional monitoring network security" loading="lazy">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">6</span>
+            <h3>Chartered Accountant / Financial Manager / Finance-related Jobs</h3>
+            <p><strong>Overview:</strong> Finance-field jobs like CA, Financial Manager, and Analysts remain in demand especially for business, banking, and auditing.</p>
+            <p><strong>Why Choose:</strong> Good if you like numbers, business-planning, and have interest in commerce/finance. Stable and well-respected career.</p>
+            <p><strong>Skills Required:</strong> Financial analysis, accounting principles, tax knowledge, Excel, attention to detail, business acumen</p>
+            <p><strong>Education Path:</strong> B.Com / CA / CMA / MBA Finance</p>
+            <a href="https://www.indeed.com/q-Chartered-Accountant-Finance-jobs.html" target="_blank">→ View Finance & Accounting Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop" alt="Financial analyst working with charts and data" loading="lazy">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">7</span>
+            <h3>Teacher / Professor / Educator</h3>
+            <p><strong>Overview:</strong> Teaching (school/college) remains a reliable, respected profession — important for education and society.</p>
+            <p><strong>Why Choose:</strong> Good option if you enjoy sharing knowledge, working with students. Stable job, especially government teaching positions.</p>
+            <p><strong>Skills Required:</strong> Subject expertise, communication, patience, creativity, leadership, organizational skills</p>
+            <p><strong>Education Path:</strong> B.Ed / M.Ed / Subject degree + Teacher certification</p>
+            <a href="https://www.indeed.com/q-School-Teacher-College-Professor-jobs.html" target="_blank">→ View Teaching Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800" alt="Teacher with Students">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">8</span>
+            <h3>Government / Public Service / Administrative Services (Civil Services, PSC)</h3>
+            <p><strong>Overview:</strong> Jobs in government service — administration, public service — are popular for stability, prestige, and fixed pay.</p>
+            <p><strong>Why Choose:</strong> Good for those who want job security and service toward society. Respected and stable career.</p>
+            <p><strong>Skills Required:</strong> Leadership, ethics, communication, problem-solving, public policy knowledge, analytical thinking</p>
+            <p><strong>Education Path:</strong> Any degree + UPSC/State PSC exam preparation</p>
+            <a href="https://www.indeed.com/q-Civil-Service-Government-Administrator-jobs.html" target="_blank">→ View Government Jobs on Indeed</a>
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">9</span>
+            <h3>Defence / Armed Forces</h3>
+            <p><strong>Overview:</strong> Defence jobs (Army, Air Force, Navy) remain a stable and respected career — good for those who like discipline, service, and adventure.</p>
+            <p><strong>Why Choose:</strong> Job security, pride, and social respect. Adventure and responsibility combined.</p>
+            <p><strong>Skills Required:</strong> Leadership, physical fitness, discipline, tactical thinking, teamwork, courage</p>
+            <p><strong>Education Path:</strong> NDA / CDS exam, Military Academy training</p>
+            <a href="https://www.indeed.com/q-Military-Officer-Defence-jobs.html" target="_blank">→ View Defence Jobs on Indeed</a>
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">10</span>
+            <h3>Digital Marketing / Content-Creation / Media & Creative Jobs</h3>
+            <p><strong>Overview:</strong> With growth of internet and media, digital marketing, content creation, and media-related jobs are emerging strongly.</p>
+            <p><strong>Why Choose:</strong> Great option for those creative and good at communication. Can also offer freelance/flexible work options.</p>
+            <p><strong>Skills Required:</strong> Social media marketing, content writing, SEO, design, analytics, communication, creativity</p>
+            <p><strong>Education Path:</strong> Degree in Media/Communications + Digital marketing certifications / Self-learning</p>
+            <a href="https://www.indeed.com/q-Digital-Marketing-Social-Media-jobs.html" target="_blank">→ View Marketing Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop" alt="Digital marketing professional working on laptop" loading="lazy">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">11</span>
+            <h3>Cloud Engineer / Cloud-Computing / DevOps / IT Infrastructure</h3>
+            <p><strong>Overview:</strong> As companies shift to cloud and online platforms, cloud engineers and related IT-infrastructure jobs are in high demand.</p>
+            <p><strong>Why Choose:</strong> Good for those interested in coding, servers, networks and stable tech-oriented career paths. High salaries.</p>
+            <p><strong>Skills Required:</strong> Cloud platforms (AWS, Azure, GCP), DevOps, Docker, Kubernetes, Linux, networking</p>
+            <p><strong>Education Path:</strong> B.Tech / Cloud certifications (AWS Solutions Architect, Azure Administrator)</p>
+            <a href="https://www.indeed.com/q-Cloud-Engineer-DevOps-jobs.html" target="_blank">→ View Cloud Computing Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop" alt="Cloud engineer working in data center" loading="lazy">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">12</span>
+            <h3>Ethical Hacker / Penetration Tester / Information Security</h3>
+            <p><strong>Overview:</strong> As digital threats rise, people who secure data, systems and networks are very valuable. This is a specialized security field.</p>
+            <p><strong>Why Choose:</strong> Growing demand and good pay — ideal for those good at tech-logic and security thinking.</p>
+            <p><strong>Skills Required:</strong> Ethical hacking, penetration testing, network security, coding, security protocols, problem-solving</p>
+            <p><strong>Education Path:</strong> BSc Cybersecurity + Ethical Hacking certifications (CEH, OSCP)</p>
+            <a href="https://www.indeed.com/q-Penetration-Tester-Security-jobs.html" target="_blank">→ View Ethical Hacking Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop" alt="Ethical hacker working on security testing" loading="lazy">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">13</span>
+            <h3>Environmental / Sustainability / Green-Jobs</h3>
+            <p><strong>Overview:</strong> With rising environmental awareness, jobs in environmental consultancy, conservation, and sustainability are gaining relevance.</p>
+            <p><strong>Why Choose:</strong> Good for those interested in nature and environment — offering future-oriented career prospects.</p>
+            <p><strong>Skills Required:</strong> Environmental science knowledge, sustainability planning, policy knowledge, data analysis, communication</p>
+            <p><strong>Education Path:</strong> BSc Environmental Science / MSc Sustainability / Environmental Management certifications</p>
+            <a href="https://www.indeed.com/q-Environmental-Consultant-Green-jobs.html" target="_blank">→ View Environmental Jobs on Indeed</a>
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">14</span>
+            <h3>Researcher / Scientist / R&D (Tech, Medicine, Environment)</h3>
+            <p><strong>Overview:</strong> Research roles — in medicine, environment, technology, social science — help advance knowledge and often lead to innovation.</p>
+            <p><strong>Why Choose:</strong> Good for those curious, analytical and interested in contributing to society and progress.</p>
+            <p><strong>Skills Required:</strong> Research methodology, data analysis, scientific writing, critical thinking, experimentation, domain expertise</p>
+            <p><strong>Education Path:</strong> MSc / PhD in relevant field + Research certifications</p>
+            <a href="https://www.indeed.com/q-Research-Scientist-Laboratory-jobs.html" target="_blank">→ View Research Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1576091160550-112173f31c77?w=800" alt="Research Scientist in Laboratory">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">15</span>
+            <h3>Entrepreneur / Startup / Business Owner / Self-Employment</h3>
+            <p><strong>Overview:</strong> Starting your own business (small or big) or becoming an entrepreneur remains a viable career — gives independence, flexibility and potential high reward.</p>
+            <p><strong>Why Choose:</strong> Good if you're motivated, creative, willing to take risk and learn new things.</p>
+            <p><strong>Skills Required:</strong> Business acumen, leadership, risk management, finance, marketing, innovation, persistence</p>
+            <p><strong>Education Path:</strong> MBA / Business courses / Startup incubation programs / Self-learning</p>
+            <a href="https://www.indeed.com/q-Entrepreneur-Business-Owner-Startup-jobs.html" target="_blank">→ View Entrepreneurship Opportunities on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" alt="Startup Business Team">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">16</span>
+            <h3>Mental Health Professional (Psychologist, Counselor, Therapist)</h3>
+            <p><strong>Overview:</strong> As awareness about mental health grows, demand for professionals like psychologists and counselors is increasing rapidly.</p>
+            <p><strong>Why Choose:</strong> Rewarding for those who want to help people emotionally and socially — good social value along with stable demand.</p>
+            <p><strong>Skills Required:</strong> Psychology knowledge, empathy, active listening, counseling techniques, communication, ethical practice</p>
+            <p><strong>Education Path:</strong> MSc Psychology / Counseling degree / Clinical psychology certifications</p>
+            <a href="https://www.indeed.com/q-Counselor-Psychologist-Mental-Health-jobs.html" target="_blank">→ View Mental Health Jobs on Indeed</a>
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">17</span>
+            <h3>Veterinarian / Animal-related Professions</h3>
+            <p><strong>Overview:</strong> Caring for animals — pets, livestock, wildlife — as a veterinarian or conservationist remains a needed and respected job.</p>
+            <p><strong>Why Choose:</strong> Good if you love animals and nature and want a job with compassion and purpose.</p>
+            <p><strong>Skills Required:</strong> Veterinary science, animal care, diagnosis, surgery, empathy, communication, research skills</p>
+            <p><strong>Education Path:</strong> B.V.Sc (Bachelor of Veterinary Science) + specializations</p>
+            <a href="https://www.indeed.com/q-Veterinarian-Animal-Healthcare-jobs.html" target="_blank">→ View Veterinary Jobs on Indeed</a>
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">18</span>
+            <h3>Airline Pilot / Flight Engineer / Aviation-related Jobs</h3>
+            <p><strong>Overview:</strong> Aviation jobs — pilots, flight engineers — are among exciting, high-prestige careers with global opportunities.</p>
+            <p><strong>Why Choose:</strong> Suitable for those who like travel, responsibility, discipline, and have required training/qualifications.</p>
+            <p><strong>Skills Required:</strong> Technical knowledge, decision-making under pressure, leadership, navigation, communication, precision</p>
+            <p><strong>Education Path:</strong> B.Tech Aeronautical Engineering + Pilot training / Aviation certifications</p>
+            <a href="https://www.indeed.com/q-Airline-Pilot-Aviation-Officer-jobs.html" target="_blank">→ View Aviation Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800" alt="Airline Pilot">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">19</span>
+            <h3>Marketing Manager / Business-Development / Sales & Marketing</h3>
+            <p><strong>Overview:</strong> Businesses always need marketing & sales — marketing managers and business-development roles are important and usually well-paid.</p>
+            <p><strong>Why Choose:</strong> Good for those with communication skills, creativity, business sense and interest in market trends.</p>
+            <p><strong>Skills Required:</strong> Strategic thinking, market analysis, leadership, communication, digital marketing, sales acumen, creativity</p>
+            <p><strong>Education Path:</strong> MBA Marketing / B.Com + Marketing certifications</p>
+            <a href="https://www.indeed.com/q-Marketing-Manager-Brand-Manager-jobs.html" target="_blank">→ View Marketing Management Jobs on Indeed</a>
+          </div>
+
+          <div class="job-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop" alt="Marketing manager presenting business strategy" loading="lazy" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+          </div>
+
+          <div class="job-card">
+            <span class="job-number">20</span>
+            <h3>Technical Writer / Content Writer / Communication-related Roles</h3>
+            <p><strong>Overview:</strong> Writing — whether technical writing, content creation, journalism — remains valuable. Many sectors need clear communication (IT, business, media, research).</p>
+            <p><strong>Why Choose:</strong> Good for those who are good at language and writing — offers flexible or freelance work options.</p>
+            <p><strong>Skills Required:</strong> Writing skills, research, technical knowledge, SEO, communication, creativity, editing, adaptability</p>
+            <p><strong>Education Path:</strong> BA English/Journalism + Content writing certifications / Specialized technical writing courses</p>
+            <a href="https://www.indeed.com/q-Technical-Writer-Content-Writer-jobs.html" target="_blank">→ View Writing & Content Jobs on Indeed</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer-section">
+        <h2>How to Choose Your Career</h2>
+        <ul>
+          <li><strong>Assess Your Interests:</strong> What subjects and activities excite you? Take our career assessment tests.</li>
+          <li><strong>Identify Your Skills:</strong> What are you naturally good at? Problem-solving? Communication? Creativity?</li>
+          <li><strong>Research Job Market:</strong> Look at demand, salary, growth potential, and work-life balance.</li>
+          <li><strong>Plan Education:</strong> Get the required degree/certifications to enter your chosen field.</li>
+          <li><strong>Build Experience:</strong> Internships, projects, and hands-on learning strengthen your profile.</li>
+          <li><strong>Network:</strong> Connect with professionals in your field of interest.</li>
+          <li><strong>Stay Flexible:</strong> Career paths evolve — be open to learning and growth.</li>
+        </ul>
+      </section>
+
+      <footer>
+        <p>Take our career assessments to discover which of these careers is the best fit for you.</p>
+        <p><a href="fed.html#dash-container">← Back to Dashboard</a></p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
+        <p><strong>Overview:</strong> Nurses and caregivers are constantly needed — in hospitals, clinics, elder-care, and community settings. Especially as demand in healthcare rises.</p>
+        <p><strong>Why Choose:</strong> A stable and socially useful career for those who want to help people.</p>
+        <p><strong>Skills Required:</strong> Empathy, patience, medical knowledge, teamwork, physical stamina</p>
+        <p><strong>Education Path:</strong> BSc Nursing / Diploma in Nursing / Certification programs</p>
+        <p><a href="https://www.indeed.com/q-Registered-Nurse-RN-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Nursing Jobs on Indeed</a></p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">3</span>
+        <h3>Software Developer / Software Engineer / Full-Stack / IT Developer</h3>
+        <p><strong>Overview:</strong> With tech growth, software development is among the top jobs — high demand in India and worldwide. Roles include backend, frontend, full-stack, mobile-app development.</p>
+        <p><strong>Why Choose:</strong> Good salaries and strong growth potential. Opportunities across all industries.</p>
+        <p><strong>Skills Required:</strong> Programming (Java, Python, C++), problem-solving, debugging, version control, system design</p>
+        <p><strong>Education Path:</strong> B.Tech / BCA / Bootcamps / Self-learning + Portfolio</p>
+        <p><a href="https://www.indeed.com/q-Software-Engineer-Full-Stack-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Software Engineering Jobs on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800" alt="Software Developer at Work" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">4</span>
+        <h3>Data Scientist / Data Analyst / AI-ML Engineer</h3>
+        <p><strong>Overview:</strong> As businesses & industries use more data, Data Scientists and AI/ML Engineers are in high demand. This is a rapidly growing field.</p>
+        <p><strong>Why Choose:</strong> Strong growth potential, good pay, and opportunities across sectors (tech, finance, health, e-commerce).</p>
+        <p><strong>Skills Required:</strong> Python, SQL, statistics, machine learning, data visualization, business acumen</p>
+        <p><strong>Education Path:</strong> MSc Data Science / B.Tech with specialization / Online certifications</p>
+        <p><a href="https://www.indeed.com/q-Data-Scientist-Machine-Learning-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Data Science Jobs on Indeed</a></p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">5</span>
+        <h3>Cybersecurity / Information Security Expert</h3>
+        <p><strong>Overview:</strong> With digital growth, demand for professionals securing data and networks is rising fast. Organizations need strong cybersecurity teams.</p>
+        <p><strong>Why Choose:</strong> Suited for those interested in tech + security — offers stable, well-paid roles with high relevance.</p>
+        <p><strong>Skills Required:</strong> Network security, ethical hacking, cryptography, threat analysis, compliance knowledge</p>
+        <p><strong>Education Path:</strong> BSc IT / Cybersecurity certifications (CISSP, CEH, Security+)</p>
+        <p><a href="https://www.indeed.com/q-Information-Security-Analyst-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Cybersecurity Jobs on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://onlinewilder.vcu.edu/wp-content/uploads/sites/3/2022/10/vcu-hsep-blog-how-to-become-an-information-security-analyst.jpeg" alt="Cybersecurity Professional" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">6</span>
+        <h3>Chartered Accountant / Financial Manager / Finance-related Jobs</h3>
+        <p><strong>Overview:</strong> Finance-field jobs like CA, Financial Manager, and Analysts remain in demand especially for business, banking, and auditing.</p>
+        <p><strong>Why Choose:</strong> Good if you like numbers, business-planning, and have interest in commerce/finance. Stable and well-respected career.</p>
+        <p><strong>Skills Required:</strong> Financial analysis, accounting principles, tax knowledge, Excel, attention to detail, business acumen</p>
+        <p><strong>Education Path:</strong> B.Com / CA / CMA / MBA Finance</p>
+        <p><a href="https://www.indeed.com/q-Chartered-Accountant-Finance-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Finance & Accounting Jobs on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://akpr.in/wp-content/uploads/2024/12/Best-Chartered-Accountant-Firm-Near-Me-1.gif" alt="Chartered Accountant Professional" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">7</span>
+        <h3>Teacher / Professor / Educator</h3>
+        <p><strong>Overview:</strong> Teaching (school/college) remains a reliable, respected profession — important for education and society.</p>
+        <p><strong>Why Choose:</strong> Good option if you enjoy sharing knowledge, working with students. Stable job, especially government teaching positions.</p>
+        <p><strong>Skills Required:</strong> Subject expertise, communication, patience, creativity, leadership, organizational skills</p>
+        <p><strong>Education Path:</strong> B.Ed / M.Ed / Subject degree + Teacher certification</p>
+        <p><a href="https://www.indeed.com/q-School-Teacher-College-Professor-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Teaching Jobs on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800" alt="Teacher with Students" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">8</span>
+        <h3>Government / Public Service / Administrative Services (Civil Services, PSC)</h3>
+        <p><strong>Overview:</strong> Jobs in government service — administration, public service — are popular for stability, prestige, and fixed pay.</p>
+        <p><strong>Why Choose:</strong> Good for those who want job security and service toward society. Respected and stable career.</p>
+        <p><strong>Skills Required:</strong> Leadership, ethics, communication, problem-solving, public policy knowledge, analytical thinking</p>
+        <p><strong>Education Path:</strong> Any degree + UPSC/State PSC exam preparation</p>
+        <p><a href="https://www.indeed.com/q-Civil-Service-Government-Administrator-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Government Jobs on Indeed</a></p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">9</span>
+        <h3>Defence / Armed Forces</h3>
+        <p><strong>Overview:</strong> Defence jobs (Army, Air Force, Navy) remain a stable and respected career — good for those who like discipline, service, and adventure.</p>
+        <p><strong>Why Choose:</strong> Job security, pride, and social respect. Adventure and responsibility combined.</p>
+        <p><strong>Skills Required:</strong> Leadership, physical fitness, discipline, tactical thinking, teamwork, courage</p>
+        <p><strong>Education Path:</strong> NDA / CDS exam, Military Academy training</p>
+        <p><a href="https://www.indeed.com/q-Military-Officer-Defence-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Defence Jobs on Indeed</a></p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">10</span>
+        <h3>Digital Marketing / Content-Creation / Media & Creative Jobs</h3>
+        <p><strong>Overview:</strong> With growth of internet and media, digital marketing, content creation, and media-related jobs are emerging strongly.</p>
+        <p><strong>Why Choose:</strong> Great option for those creative and good at communication. Can also offer freelance/flexible work options.</p>
+        <p><strong>Skills Required:</strong> Social media marketing, content writing, SEO, design, analytics, communication, creativity</p>
+        <p><strong>Education Path:</strong> Degree in Media/Communications + Digital marketing certifications / Self-learning</p>
+        <p><a href="https://www.indeed.com/q-Digital-Marketing-Social-Media-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Marketing Jobs on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://png.pngtree.com/png-clipart/20230922/original/pngtree-digital-marketing-with-man-working-in-laptop-business-male-laptop-vector-png-image_12723017.png" alt="Digital Marketing Professional" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">11</span>
+        <h3>Cloud Engineer / Cloud-Computing / DevOps / IT Infrastructure</h3>
+        <p><strong>Overview:</strong> As companies shift to cloud and online platforms, cloud engineers and related IT-infrastructure jobs are in high demand.</p>
+        <p><strong>Why Choose:</strong> Good for those interested in coding, servers, networks and stable tech-oriented career paths. High salaries.</p>
+        <p><strong>Skills Required:</strong> Cloud platforms (AWS, Azure, GCP), DevOps, Docker, Kubernetes, Linux, networking</p>
+        <p><strong>Education Path:</strong> B.Tech / Cloud certifications (AWS Solutions Architect, Azure Administrator)</p>
+        <p><a href="https://www.indeed.com/q-Cloud-Engineer-DevOps-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Cloud Computing Jobs on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://i0.wp.com/hyperviewhq.com/wp-content/uploads/2023/09/Data-Center-Technician-Woman.jpg?fit=1000%2C560&quality=89&ssl=1" alt="Cloud Engineer / DevOps Professional" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">12</span>
+        <h3>Ethical Hacker / Penetration Tester / Information Security</h3>
+        <p><strong>Overview:</strong> As digital threats rise, people who secure data, systems and networks are very valuable. This is a specialized security field.</p>
+        <p><strong>Why Choose:</strong> Growing demand and good pay — ideal for those good at tech-logic and security thinking.</p>
+        <p><strong>Skills Required:</strong> Ethical hacking, penetration testing, network security, coding, security protocols, problem-solving</p>
+        <p><strong>Education Path:</strong> BSc Cybersecurity + Ethical Hacking certifications (CEH, OSCP)</p>
+        <p><a href="https://www.indeed.com/q-Penetration-Tester-Security-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Ethical Hacking Jobs on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://online.maryville.edu/wp-content/uploads/sites/97/2023/10/Ethical_hacking_750x500-500x333-1.jpg" alt="Ethical Hacker / Penetration Tester" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">13</span>
+        <h3>Environmental / Sustainability / Green-Jobs</h3>
+        <p><strong>Overview:</strong> With rising environmental awareness, jobs in environmental consultancy, conservation, and sustainability are gaining relevance.</p>
+        <p><strong>Why Choose:</strong> Good for those interested in nature and environment — offering future-oriented career prospects.</p>
+        <p><strong>Skills Required:</strong> Environmental science knowledge, sustainability planning, policy knowledge, data analysis, communication</p>
+        <p><strong>Education Path:</strong> BSc Environmental Science / MSc Sustainability / Environmental Management certifications</p>
+        <p><a href="https://www.indeed.com/q-Environmental-Consultant-Green-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Environmental Jobs on Indeed</a></p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">14</span>
+        <h3>Researcher / Scientist / R&D (Tech, Medicine, Environment)</h3>
+        <p><strong>Overview:</strong> Research roles — in medicine, environment, technology, social science — help advance knowledge and often lead to innovation.</p>
+        <p><strong>Why Choose:</strong> Good for those curious, analytical and interested in contributing to society and progress.</p>
+        <p><strong>Skills Required:</strong> Research methodology, data analysis, scientific writing, critical thinking, experimentation, domain expertise</p>
+        <p><strong>Education Path:</strong> MSc / PhD in relevant field + Research certifications</p>
+        <p><a href="https://www.indeed.com/q-Research-Scientist-Laboratory-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Research Jobs on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://scholarlykitchen.sspnet.org/wp-content/uploads/2020/03/iStock-1145648619.jpg" alt="Research Scientist in Laboratory" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">15</span>
+        <h3>Entrepreneur / Startup / Business Owner / Self-Employment</h3>
+        <p><strong>Overview:</strong> Starting your own business (small or big) or becoming an entrepreneur remains a viable career — gives independence, flexibility and potential high reward.</p>
+        <p><strong>Why Choose:</strong> Good if you're motivated, creative, willing to take risk and learn new things.</p>
+        <p><strong>Skills Required:</strong> Business acumen, leadership, risk management, finance, marketing, innovation, persistence</p>
+        <p><strong>Education Path:</strong> MBA / Business courses / Startup incubation programs / Self-learning</p>
+        <p><a href="https://www.indeed.com/q-Entrepreneur-Business-Owner-Startup-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Entrepreneurship Opportunities on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" alt="Startup Business Team" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">16</span>
+        <h3>Mental Health Professional (Psychologist, Counselor, Therapist)</h3>
+        <p><strong>Overview:</strong> As awareness about mental health grows, demand for professionals like psychologists and counselors is increasing rapidly.</p>
+        <p><strong>Why Choose:</strong> Rewarding for those who want to help people emotionally and socially — good social value along with stable demand.</p>
+        <p><strong>Skills Required:</strong> Psychology knowledge, empathy, active listening, counseling techniques, communication, ethical practice</p>
+        <p><strong>Education Path:</strong> MSc Psychology / Counseling degree / Clinical psychology certifications</p>
+        <p><a href="https://www.indeed.com/q-Counselor-Psychologist-Mental-Health-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Mental Health Jobs on Indeed</a></p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">17</span>
+        <h3>Veterinarian / Animal-related Professions</h3>
+        <p><strong>Overview:</strong> Caring for animals — pets, livestock, wildlife — as a veterinarian or conservationist remains a needed and respected job.</p>
+        <p><strong>Why Choose:</strong> Good if you love animals and nature and want a job with compassion and purpose.</p>
+        <p><strong>Skills Required:</strong> Veterinary science, animal care, diagnosis, surgery, empathy, communication, research skills</p>
+        <p><strong>Education Path:</strong> B.V.Sc (Bachelor of Veterinary Science) + specializations</p>
+        <p><a href="https://www.indeed.com/q-Veterinarian-Animal-Healthcare-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Veterinary Jobs on Indeed</a></p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">18</span>
+        <h3>Airline Pilot / Flight Engineer / Aviation-related Jobs</h3>
+        <p><strong>Overview:</strong> Aviation jobs — pilots, flight engineers — are among exciting, high-prestige careers with global opportunities.</p>
+        <p><strong>Why Choose:</strong> Suitable for those who like travel, responsibility, discipline, and have required training/qualifications.</p>
+        <p><strong>Skills Required:</strong> Technical knowledge, decision-making under pressure, leadership, navigation, communication, precision</p>
+        <p><strong>Education Path:</strong> B.Tech Aeronautical Engineering + Pilot training / Aviation certifications</p>
+        <p><a href="https://www.indeed.com/q-Airline-Pilot-Aviation-Officer-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Aviation Jobs on Indeed</a></p>
+      </div>
+
+      <div style="margin:24px 0;text-align:center">
+        <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800" alt="Airline Pilot" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">19</span>
+        <h3>Marketing Manager / Business-Development / Sales & Marketing</h3>
+        <p><strong>Overview:</strong> Businesses always need marketing & sales — marketing managers and business-development roles are important and usually well-paid.</p>
+        <p><strong>Why Choose:</strong> Good for those with communication skills, creativity, business sense and interest in market trends.</p>
+        <p><strong>Skills Required:</strong> Strategic thinking, market analysis, leadership, communication, digital marketing, sales acumen, creativity</p>
+        <p><strong>Education Path:</strong> MBA Marketing / B.Com + Marketing certifications</p>
+        <p><a href="https://www.indeed.com/q-Marketing-Manager-Brand-Manager-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Marketing Management Jobs on Indeed</a></p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-number">20</span>
+        <h3>Technical Writer / Content Writer / Communication-related Roles</h3>
+        <p><strong>Overview:</strong> Writing — whether technical writing, content creation, journalism — remains valuable. Many sectors need clear communication (IT, business, media, research).</p>
+        <p><strong>Why Choose:</strong> Good for those who are good at language and writing — offers flexible or freelance work options.</p>
+        <p><strong>Skills Required:</strong> Writing skills, research, technical knowledge, SEO, communication, creativity, editing, adaptability</p>
+        <p><strong>Education Path:</strong> BA English/Journalism + Content writing certifications / Specialized technical writing courses</p>
+        <p><a href="https://www.indeed.com/q-Technical-Writer-Content-Writer-jobs.html" target="_blank" style="color:#0f5fff;font-weight:600">→ View Writing & Content Jobs on Indeed</a></p>
+      </div>
+    </section>
+
+    <section style="margin-top:32px;padding:20px;background:#f0f8ff;border-radius:10px">
+      <h2>How to Choose Your Career</h2>
+      <ul style="font-size:16px;line-height:1.8;color:#444">
+        <li><strong>Assess Your Interests:</strong> What subjects and activities excite you? Take our career assessment tests.</li>
+        <li><strong>Identify Your Skills:</strong> What are you naturally good at? Problem-solving? Communication? Creativity?</li>
+        <li><strong>Research Job Market:</strong> Look at demand, salary, growth potential, and work-life balance.</li>
+        <li><strong>Plan Education:</strong> Get the required degree/certifications to enter your chosen field.</li>
+        <li><strong>Build Experience:</strong> Internships, projects, and hands-on learning strengthen your profile.</li>
+        <li><strong>Network:</strong> Connect with professionals in your field of interest.</li>
+        <li><strong>Stay Flexible:</strong> Career paths evolve — be open to learning and growth.</li>
+      </ul>
+    </section>
+
+    <footer style="margin-top:28px;color:#666;font-size:13px;text-align:center">
+      <p>Take our career assessments to discover which of these careers is the best fit for you.</p>
+      <p><a href="fed.html#dash-container" style="color:#0f5fff;text-decoration:none">← Back to Dashboard</a></p>
+    </footer>
+  </main>
+</body>
+</html>

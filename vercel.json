@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "name": "careerpath-platform",
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.js",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/dashboard",
+      "dest": "/fed.html"
+    },
+    {
+      "src": "/jobs",
+      "dest": "/jobs.html"
+    },
+    {
+      "src": "/careers",
+      "dest": "/css-careers.html"
+    },
+    {
+      "src": "/about",
+      "dest": "/about.html"
+    },
+    {
+      "src": "/(?!.*\\.(html|css|js|json|xml|txt|woff2?|ttf|eot|svg|jpg|jpeg|png|gif|ico|webp)$)(.*)",
+      "dest": "/fed.html"
+    }
+  ]
+}

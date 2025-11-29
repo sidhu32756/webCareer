@@ -1,0 +1,22 @@
+{
+  "name": "careerpath-platform",
+  "version": "1.0.0",
+  "description": "Interactive Career Guidance & Exploration Platform",
+  "main": "fed.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=fed.html",
+    "build": "echo 'No build process needed - static files ready'",
+    "deploy": "echo 'Ready for deployment to any static hosting service'"
+  },
+  "keywords": ["career", "guidance", "assessment", "jobs", "platform"],
+  "author": "CareerPath Team",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

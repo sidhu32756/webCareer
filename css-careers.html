@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore 12 specialized computer science and IT career paths including software engineering, data science, cybersecurity, and cloud computing.">
+  <meta name="keywords" content="computer science careers, IT jobs, software engineer, data scientist, cybersecurity, programming careers">
+  <title>Computer Science & IT Careers</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif;
+      background: #f5f7fb;
+      color: #0f1724;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 36px auto;
+      padding: 24px;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 212, 255, 0.12);
+      background: #fff;
+      color: #00d4ff;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(0, 212, 255, 0.05);
+      border-color: rgba(0, 212, 255, 0.2);
+    }
+
+    .back-btn:focus {
+      outline: 2px solid rgba(0, 212, 255, 0.3);
+      outline-offset: 2px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, #00d4ff, #0099cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-header p {
+      font-size: 16px;
+      color: #576278;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .career-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .career-card {
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid rgba(0, 212, 255, 0.06);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.04);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .career-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 212, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .career-card h3 {
+      color: #0f1724;
+      margin-bottom: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .career-card p {
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: #576278;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .career-card strong {
+      color: #0f1724;
+      font-weight: 600;
+    }
+
+    .career-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 8px 14px;
+      background: linear-gradient(180deg, #00d4ff, #0099cc);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 212, 255, 0.2);
+      border: none;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .career-card a:hover {
+      background: linear-gradient(180deg, #0099cc, #006b99);
+      box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .career-card a:focus {
+      outline: 2px solid rgba(0, 212, 255, 0.4);
+      outline-offset: 2px;
+    }
+
+    .footer-section {
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+      border-radius: 14px;
+      padding: 24px;
+      border: 1px solid rgba(0, 212, 255, 0.06);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.04);
+      margin-top: 36px;
+      margin-bottom: 24px;
+    }
+
+    .footer-section h2 {
+      color: #0f1724;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      border-bottom: 2px solid rgba(0, 212, 255, 0.1);
+      padding-bottom: 12px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section li {
+      padding: 8px 0;
+      color: #576278;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer-section li:before {
+      content: "▸ ";
+      color: #00d4ff;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #576278;
+      font-size: 14px;
+      border-top: 1px solid rgba(0, 212, 255, 0.06);
+    }
+
+    footer a {
+      color: #00d4ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #0099cc;
+    }
+
+    @media (max-width: 1100px) {
+      .page {
+        max-width: 100%;
+        padding: 16px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .career-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        margin: 16px auto;
+        padding: 12px;
+      }
+
+      .page-header {
+        margin-bottom: 24px;
+      }
+
+      .page-header h1 {
+        font-size: 20px;
+      }
+
+      .page-header p {
+        font-size: 14px;
+      }
+
+      .career-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .career-card {
+        padding: 16px;
+      }
+
+      .career-card h3 {
+        font-size: 15px;
+      }
+
+      .career-card p {
+        font-size: 12px;
+      }
+
+      .career-card a {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+
+      .footer-section {
+        padding: 16px;
+      }
+
+      .footer-section h2 {
+        font-size: 16px;
+      }
+
+      .footer-section li {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-row">
+      <a href="fed.html#dash-container" class="back-btn">← Back</a>
+    </div>
+
+    <div class="page-header">
+      <h1>Computer Science & IT Careers</h1>
+      <p>Explore specialized careers in computer science, software development, cybersecurity, cloud computing, and IT infrastructure</p>
+    </div>
+
+    <section class="career-cards">
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=250&fit=crop" alt="Software Engineer" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>1. Software Engineer / Full-Stack Developer</h3>
+        <p><strong>Overview:</strong> Design, build, and maintain software applications. Full-stack developers work on both frontend (user-facing) and backend (server-side) components.</p>
+        <p><strong>Why Choose:</strong> High demand globally, excellent salary, career growth opportunities, work flexibility (remote positions common).</p>
+        <p><strong>Key Skills:</strong> Programming (Java, Python, JavaScript, C++), system design, databases, APIs, version control (Git), problem-solving, collaboration.</p>
+        <p><strong>Specializations:</strong> Web development, mobile development, desktop applications, game development, embedded systems.</p>
+        <p><strong>Education Path:</strong> B.Tech Computer Science / BCA / Software Engineering bootcamps / Self-taught + portfolio</p>
+        <p><strong>Average Salary:</strong> $80,000 - $150,000+ per year (varies by experience and location)</p>
+        <a href="https://www.indeed.com/q-Software-Engineer-Full-Stack-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="Data Scientist" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>2. Data Scientist / Machine Learning Engineer</h3>
+        <p><strong>Overview:</strong> Extract insights from data using statistical analysis and machine learning. Build predictive models and algorithms to solve business problems.</p>
+        <p><strong>Why Choose:</strong> Emerging field with explosive growth, high salary, opportunities across all industries (tech, finance, healthcare, e-commerce).</p>
+        <p><strong>Key Skills:</strong> Python, R, SQL, statistics, machine learning algorithms, data visualization, deep learning frameworks (TensorFlow, PyTorch), communication.</p>
+        <p><strong>Specializations:</strong> Data analytics, predictive modeling, natural language processing, computer vision, recommender systems, business intelligence.</p>
+        <p><strong>Education Path:</strong> MSc Data Science / B.Tech with specialization / Online certifications (Coursera, Andrew Ng's ML course)</p>
+        <p><strong>Average Salary:</strong> $100,000 - $180,000+ per year</p>
+        <a href="https://www.indeed.com/q-Data-Scientist-Machine-Learning-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1552084898-04aa51d49a1b?w=400&h=250&fit=crop" alt="Cybersecurity" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>3. Cybersecurity Analyst / Information Security Engineer</h3>
+        <p><strong>Overview:</strong> Protect organizations' computer systems, networks, and data from cyber attacks. Monitor security threats and implement defensive measures.</p>
+        <p><strong>Why Choose:</strong> Rapid growth due to increasing cyber threats, excellent job security, good salary, critical role in modern businesses.</p>
+        <p><strong>Key Skills:</strong> Network security, firewalls, encryption, penetration testing, threat analysis, security protocols, compliance knowledge (GDPR, ISO), Linux/Unix.</p>
+        <p><strong>Specializations:</strong> Application security, cloud security, infrastructure security, incident response, security architecture, forensics.</p>
+        <p><strong>Education Path:</strong> B.Tech IT/Cybersecurity / Certifications (CISSP, CEH, Security+, CompTIA Security+)</p>
+        <p><strong>Average Salary:</strong> $85,000 - $160,000+ per year</p>
+        <a href="https://www.indeed.com/q-Information-Security-Analyst-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop" alt="Cloud Engineer" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>4. Cloud Architect / Cloud Engineer / DevOps Engineer</h3>
+        <p><strong>Overview:</strong> Design and maintain cloud infrastructure. DevOps engineers bridge development and operations, automating deployment and scaling of applications.</p>
+        <p><strong>Why Choose:</strong> High demand as companies migrate to cloud, competitive salary, modern technology, flexible work arrangements.</p>
+        <p><strong>Key Skills:</strong> AWS/Azure/GCP platforms, Docker, Kubernetes, CI/CD pipelines, Linux, infrastructure-as-code, monitoring tools, networking.</p>
+        <p><strong>Specializations:</strong> Cloud architecture, containerization, infrastructure automation, cloud migration, serverless computing, distributed systems.</p>
+        <p><strong>Education Path:</strong> B.Tech / Cloud certifications (AWS Solutions Architect, Azure Administrator, Google Cloud Associate)</p>
+        <p><strong>Average Salary:</strong> $90,000 - $170,000+ per year</p>
+        <a href="https://www.indeed.com/q-Cloud-Engineer-DevOps-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop" alt="Database Administrator" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>5. Database Administrator / Database Architect</h3>
+        <p><strong>Overview:</strong> Design, implement, and manage databases. Ensure data security, performance optimization, and system reliability.</p>
+        <p><strong>Why Choose:</strong> Steady demand, good salary, critical role (data is valuable), opportunity for specialization.</p>
+        <p><strong>Key Skills:</strong> SQL, database design, performance tuning, backup/recovery, security, replication, cluster management, monitoring tools.</p>
+        <p><strong>Specializations:</strong> Relational databases (PostgreSQL, Oracle, SQL Server), NoSQL (MongoDB, Cassandra), data warehousing, big data systems.</p>
+        <p><strong>Education Path:</strong> B.Tech / IT certifications (Oracle DBA, Microsoft SQL Server, AWS Certified Database)</p>
+        <p><strong>Average Salary:</strong> $75,000 - $140,000+ per year</p>
+        <a href="https://www.indeed.com/q-Database-Administrator-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=250&fit=crop" alt="Web Developer" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>6. Web Developer / Frontend Engineer</h3>
+        <p><strong>Overview:</strong> Build responsive, user-friendly websites and web applications. Create engaging interfaces and implement design requirements.</p>
+        <p><strong>Why Choose:</strong> High demand, creative work, flexible (freelance opportunities common), growing salary potential, continuous learning.</p>
+        <p><strong>Key Skills:</strong> HTML, CSS, JavaScript, React/Vue/Angular, responsive design, UI/UX principles, version control, debugging, accessibility.</p>
+        <p><strong>Specializations:</strong> Frontend development, UI/UX design, progressive web apps, single-page applications, web performance optimization.</p>
+        <p><strong>Education Path:</strong> B.Tech / BCA / Bootcamps / Self-learning + portfolio on GitHub</p>
+        <p><strong>Average Salary:</strong> $60,000 - $130,000+ per year</p>
+        <a href="https://www.indeed.com/q-Web-Developer-Frontend-Engineer-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f70ab7cb0?w=400&h=250&fit=crop" alt="Mobile Developer" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>7. Mobile Application Developer</h3>
+        <p><strong>Overview:</strong> Develop applications for mobile devices (iOS/Android). Create apps that run on smartphones and tablets.</p>
+        <p><strong>Why Choose:</strong> Growing market, good salary, creative freedom, portfolio projects visible to millions, remote work opportunities.</p>
+        <p><strong>Key Skills:</strong> Swift/Kotlin, iOS/Android frameworks, REST APIs, databases, UI design, testing, version control, mobile-specific optimization.</p>
+        <p><strong>Specializations:</strong> Native iOS development, native Android development, cross-platform (Flutter, React Native), game development, IoT applications.</p>
+        <p><strong>Education Path:</strong> B.Tech / Swift/Kotlin certifications / Online courses / App projects on portfolio</p>
+        <p><strong>Average Salary:</strong> $70,000 - $150,000+ per year</p>
+        <a href="https://www.indeed.com/q-Mobile-App-Developer-iOS-Android-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1677442d019ceea3756291f2735cdc643ee0ae6b?w=400&h=250&fit=crop" alt="AI Research Scientist" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>8. AI/ML Research Scientist</h3>
+        <p><strong>Overview:</strong> Research and develop new machine learning algorithms and AI technologies. Push the boundaries of artificial intelligence.</p>
+        <p><strong>Why Choose:</strong> Cutting-edge work, highest salaries in tech, publish research papers, contribute to technological advancement, academic/industry roles.</p>
+        <p><strong>Key Skills:</strong> Advanced mathematics (linear algebra, calculus), Python/C++, deep learning, research methodology, paper writing, PyTorch/TensorFlow expertise.</p>
+        <p><strong>Specializations:</strong> Natural language processing, computer vision, robotics, reinforcement learning, generative models, quantum machine learning.</p>
+        <p><strong>Education Path:</strong> MSc/PhD in Machine Learning / Computer Science / Mathematics + Strong publication record</p>
+        <p><strong>Average Salary:</strong> $120,000 - $250,000+ per year</p>
+        <a href="https://www.indeed.com/q-AI-Machine-Learning-Research-Scientist-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Systems Administrator" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>9. Systems Administrator / Network Administrator</h3>
+        <p><strong>Overview:</strong> Maintain and optimize IT infrastructure. Manage servers, networks, user accounts, and system resources.</p>
+        <p><strong>Why Choose:</strong> Steady demand, good salary, critical role, opportunity to specialize, hybrid work common.</p>
+        <p><strong>Key Skills:</strong> Linux/Windows administration, networking (TCP/IP, DNS, DHCP), security, monitoring tools, scripting, system configuration, troubleshooting.</p>
+        <p><strong>Specializations:</strong> Network engineering, systems architecture, cloud infrastructure, security hardening, virtualization (VMware, Hyper-V).</p>
+        <p><strong>Education Path:</strong> B.Tech / IT certifications (CompTIA A+, Network+, Security+; Microsoft, Cisco certifications)</p>
+        <p><strong>Average Salary:</strong> $60,000 - $120,000+ per year</p>
+        <a href="https://www.indeed.com/q-Systems-Administrator-Network-Admin-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1516321344972-94477a25f362?w=400&h=250&fit=crop" alt="QA Engineer" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>10. Quality Assurance (QA) Engineer / Test Automation Engineer</h3>
+        <p><strong>Overview:</strong> Test software applications to identify bugs and ensure quality. Automate testing processes for efficiency and coverage.</p>
+        <p><strong>Why Choose:</strong> Growing demand, good salary, essential role (quality matters), opportunities in automation and test framework development.</p>
+        <p><strong>Key Skills:</strong> Test automation frameworks (Selenium, Appium), manual testing, SQL, APIs, scripting languages, test planning, bug tracking tools.</p>
+        <p><strong>Specializations:</strong> Automation testing, performance testing, security testing, mobile testing, API testing, AI-powered testing tools.</p>
+        <p><strong>Education Path:</strong> B.Tech / QA certifications (ISTQB, CSTE) / Bootcamps / Self-learning with projects</p>
+        <p><strong>Average Salary:</strong> $50,000 - $110,000+ per year</p>
+        <a href="https://www.indeed.com/q-QA-Engineer-Test-Automation-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=250&fit=crop" alt="Ethical Hacker" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>11. Penetration Tester / Ethical Hacker</h3>
+        <p><strong>Overview:</strong> Test security by attempting authorized hacking. Find vulnerabilities before malicious hackers do and help organizations secure systems.</p>
+        <p><strong>Why Choose:</strong> Exciting work, high salary, growing demand, challenging problems, opportunities in security consulting.</p>
+        <p><strong>Key Skills:</strong> Ethical hacking, networking, operating systems, exploitation techniques, security tools (Metasploit, Burp Suite), report writing, compliance.</p>
+        <p><strong>Specializations:</strong> Web application penetration testing, infrastructure testing, social engineering, red team operations, threat modeling.</p>
+        <p><strong>Education Path:</strong> B.Tech Cybersecurity / Ethical hacking certifications (CEH, OSCP, Security+)</p>
+        <p><strong>Average Salary:</strong> $90,000 - $160,000+ per year</p>
+        <a href="https://www.indeed.com/q-Penetration-Tester-Ethical-Hacker-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+
+      <div class="career-card">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="IT Project Manager" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+        <h3>12. IT Project Manager / IT Consultant</h3>
+        <p><strong>Overview:</strong> Manage IT projects and initiatives. As consultant, provide technical expertise and strategy advice to organizations.</p>
+        <p><strong>Why Choose:</strong> Leadership opportunities, good salary, business exposure, career advancement to senior management, global opportunities.</p>
+        <p><strong>Key Skills:</strong> Project management (Agile, Waterfall), leadership, communication, technical knowledge, budgeting, risk management, stakeholder management.</p>
+        <p><strong>Specializations:</strong> Enterprise IT project management, digital transformation consulting, cloud migration advisory, IT strategy, vendor management.</p>
+        <p><strong>Education Path:</strong> B.Tech + MBA / PMP (Project Management Professional) / ITIL certifications / IT background + management training</p>
+        <p><strong>Average Salary:</strong> $80,000 - $150,000+ per year</p>
+        <a href="https://www.indeed.com/q-IT-Project-Manager-IT-Consultant-jobs.html" target="_blank">→ View Jobs on Indeed</a>
+      </div>
+    </section>
+
+    <section class="footer-section">
+      <h2>Why Pursue a CS/IT Career?</h2>
+      <ul>
+        <li><strong>High Demand & Job Security:</strong> Technology is essential to every industry. Demand far exceeds supply of qualified professionals.</li>
+        <li><strong>Excellent Salaries:</strong> Tech careers offer some of the highest average salaries compared to other fields.</li>
+        <li><strong>Global Opportunities:</strong> Work remotely for companies worldwide or relocate internationally with ease.</li>
+        <li><strong>Continuous Learning:</strong> Technology evolves rapidly — always new tools, languages, and methodologies to master.</li>
+        <li><strong>Problem-Solving:</strong> Build solutions that impact millions. Create technology that makes a difference.</li>
+        <li><strong>Career Flexibility:</strong> Move between roles (developer → architect → manager), industries, or start your own tech company.</li>
+        <li><strong>Innovation & Creativity:</strong> Bring ideas to life through code. Contribute to cutting-edge technologies like AI, blockchain, quantum computing.</li>
+      </ul>
+    </section>
+
+    <section class="footer-section">
+      <h2>Getting Started in CS/IT</h2>
+      <ul>
+        <li><strong>Learn to Code:</strong> Start with Python, JavaScript, or Java. Use free resources (Codecademy, freeCodeCamp, MIT OpenCourseWare).</li>
+        <li><strong>Build Projects:</strong> Create portfolio projects on GitHub. Show employers what you can build.</li>
+        <li><strong>Get Certified:</strong> Pursue relevant certifications in your specialization (AWS, Azure, Kubernetes, etc.).</li>
+        <li><strong>Network:</strong> Join tech communities, attend hackathons, connect with professionals on LinkedIn.</li>
+        <li><strong>Stay Updated:</strong> Follow tech blogs, podcasts, and courses to keep up with industry trends.</li>
+        <li><strong>Practice Interviews:</strong> Prepare for technical interviews with coding challenges and system design questions.</li>
+        <li><strong>Contribute to Open Source:</strong> Build real-world experience by contributing to open-source projects.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Explore these specialized CS/IT careers and find the perfect fit for your technical interests.</p>
+      <p><a href="fed.html#dash-container">← Back to Dashboard</a></p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find your perfect career path with interactive assessments and career explorer. Take scientifically-backed tests to discover your strengths and career options.">
+  <meta name="keywords" content="career guidance, career assessment, job search, career planning, personality test, skills evaluation, career explorer">
+  <meta name="author" content="CareerPath Platform">
+  <meta property="og:title" content="CareerPath - Find Your Perfect Career">
+  <meta property="og:description" content="Interactive career guidance platform with assessments and career explorer">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yoursite.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>⚡CareerPath - Find Your Perfect Career Path</title>
+
+  <!-- ✅ Main Styles -->
+  <!-- Combined styles -->
+  <link rel="stylesheet" href="fed.css">
+  
+  <!-- ✅ Authentication Script -->
+  <script src="auth.js"></script>
+  
+  <!-- ✅ Main Application Script -->
+  <script src="app.js"></script>
+
+</head>
+<body>
+
+  <!-- ✅ HOME SCREEN -->
+  <div id="home-screen" class="screen active">
+
+    <header class="navbar">
+      <div class="logo">CareerPath</div>
+      <nav>
+        <a href="#" onclick="openLogin()">Sign In</a>
+        <button class="btn outline small" onclick="openFeedbackModal()" aria-label="Open feedback form">💬</button>
+        <button class="btn small" onclick="openLogin()">Get Started</button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Find Your Perfect <span>Career Path</span></h1>
+      <p>Take scientifically-backed assessments to discover your strengths and career options.</p>
+
+      <div class="hero-btns">
+        <button class="btn" onclick="openLogin()">Get Started Free</button>
+        <button class="btn outline">Explore Careers</button>
+      </div>
+    </section>
+
+    <section class="assessment-section">
+      <h2>Comprehensive Career Assessment</h2>
+      <p class="subtext">We give you a complete picture of your future potential.</p>
+      <div class="grid">
+        <div class="card"><h3>Personality Assessment</h3></div>
+        <div class="card"><h3>Skills Evaluation</h3></div>
+        <div class="card"><h3>Interest Inventory</h3></div>
+        <div class="card"><h3>Career Insights</h3></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h3>Ready to Discover Your Future?</h3>
+      <p>Join thousands who found the right career path.</p>
+      <button class="btn" onclick="openLogin()">Login Now</button>
+    </section>
+
+  </div>
+  <!-- ✅ END HOME -->
+
+
+
+  <!-- ✅ LOGIN SCREEN -->
+  <div id="login-screen" class="screen">
+
+    <div class="login-container">
+      <div class="form-box">
+
+        <div class="icon-circle">🌐</div>
+        <h2>Welcome to CareerPath</h2>
+        <p class="subtitle">Start your perfect career journey</p>
+
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="showForm('signin', event)">Sign In</button>
+          <button class="tab-btn" onclick="showForm('signup', event)">Sign Up</button>
+        </div>
+
+        <form id="signin" class="form active" onsubmit="handleSignIn(event)">
+          <label>Email</label>
+          <input type="email" placeholder="Enter email" required>
+
+          <label>Password</label>
+          <input type="password" placeholder="********" required>
+
+          <button type="submit" class="submit-btn">Sign In</button>
+        </form>
+
+        <form id="signup" class="form" onsubmit="handleSignUp(event)">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your Name" required>
+
+          <label>Email</label>
+          <input type="email" placeholder="Enter email" required>
+
+          <label>Password</label>
+          <input type="password" placeholder="Create password (min 6 chars)" required>
+
+          <button type="submit" class="submit-btn">Create Account</button>
+        </form>
+
+        <p style="margin-top:10px;">
+          <a href="#" onclick="goHome()">⬅ Back to Home</a>
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- ✅ END LOGIN -->
+
+
+  <!-- ✅ DASHBOARD ✅ -->
+  <section id="dashboard-screen" class="screen">
+
+    <header class="dash-header">
+      <div class="dash-logo">CareerPath</div>
+      <nav class="dash-nav">
+        <a href="#" id="goDashboard">🏠 Dashboard</a>
+        <a href="#" onclick="showFeedbackList()" aria-label="View feedback responses">✉️ </a>
+        <a href="jobs.html">💼 JOBS</a>
+        <a href="about.html">📚Free Test</a>
+        <a href="#" id="logoutBtn" onclick="handleSignOut()">⇢ Sign Out</a>
+      </nav>
+    </header>
+
+    <div id="dash-container" class="dash-container">
+      <h1>Your Dashboard</h1>
+      <p class="dash-subtitle">Start or continue your career assessments</p>
+
+      <div class="assessment-cards">
+
+        <div class="assessment-card">
+          <div class="icon-box">🧠</div>
+          <h3>Personality Assessment</h3>
+
+          <p>Discover your personality traits and work style preferences</p>
+          <div class="info-row"><span>5 questions</span><span>10 min</span></div>
+          <button class="btn small" onclick="startAssessment('personality')">▶ Start Assessment</button>
+        </div>
+
+        <div class="assessment-card">
+          <div class="icon-box">📊</div>
+          <h3>Skills Evaluation</h3>
+          <p>Identify your strongest abilities</p>
+          <div class="info-row"><span>12 questions</span><span>15 min</span></div>
+          <button class="btn small" onclick="startAssessment('skills')">▶ Start Assessment</button>
+        </div>
+
+        <div class="assessment-card">
+          <div class="icon-box">🎯</div>
+          <h3>Interest Inventory</h3>
+          <p>Explore what motivates you</p>
+          <div class="info-row"><span>10 questions</span><span>15 min</span></div>
+          <button class="btn small" onclick="startAssessment('interests')">▶ Start Assessment</button>
+        </div>
+
+      </div>
+
+      <div class="career-box">
+        <h3>Explore Career Options</h3>
+        <p>Find the perfect match for your abilities</p>
+        <button class="btn small" onclick="openAllCareers()">View All Careers</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ✅ ASSESSMENT SCREEN -->
+  <section id="assessment-screen" class="screen">
+    <div class="assessment-wrap">
+      <div class="assessment-header">
+        <h2 id="test-title">Assessment</h2>
+        <div class="progress">
+          <div id="progress-bar" class="progress-bar"><div id="progress-fill" class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div id="question-area" class="question-area">
+        <!-- Questions will be rendered here -->
+      </div>
+
+      <div class="assessment-actions">
+        <button class="btn outline" id="prev-btn" onclick="prevQuestion()">◀ Prev</button>
+        <button class="btn" id="next-btn" onclick="nextQuestion()">Next ▶</button>
+        <button class="btn" id="submit-btn" onclick="submitTest()" style="display:none">Submit</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ✅ CAREER EXPLORER -->
+  <section id="career-explorer-screen" class="screen">
+    <div class="career-explorer">
+      <header class="explorer-header">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <button class="btn outline small" onclick="goDash()" aria-label="Back to dashboard">← Back</button>
+          <h2 style="margin:0;flex:1;text-align:center">Explore Career Options</h2>
+          <div style="width:86px"></div>
+        </div>
+        <p>Discover a wide range of careers based on your interests and skills.</p>
+
+        <div class="explorer-controls" aria-label="Career search and filters">
+          <form id="career-search-form" onsubmit="event.preventDefault(); renderCareerExplorer();" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <input id="career-search" type="search" placeholder="Search careers..." aria-label="Search careers" style="min-width:280px;padding:10px;border-radius:8px;border:1px solid #dfeafc" />
+            <button id="career-search-btn" class="btn" type="submit">Search</button>
+
+            <label for="category-filter" class="sr-only" style="display:none">Category</label>
+            <select id="category-filter" aria-label="Filter by category" style="padding:8px;border-radius:8px;border:1px solid #e6eefc">
+              <option value="">All Categories</option>
+              <option value="Technology">Technology</option>
+              <option value="Design">Design</option>
+              <option value="Data">Data</option>
+              <option value="Management">Management</option>
+              <option value="Quality">Quality</option>
+            </select>
+
+            <label for="skill-filter" class="sr-only" style="display:none">Skill</label>
+            <select id="skill-filter" aria-label="Filter by skill" style="padding:8px;border-radius:8px;border:1px solid #e6eefc">
+              <option value="">All Skills</option>
+            </select>
+          </form>
+        </div>
+      </header>
+
+      <div id="career-list" class="career-list">
+        <!-- career items rendered here -->
+      </div>
+    </div>
+
+    <!-- career detail modal -->
+    <div id="career-modal" class="career-modal" style="display:none">
+      <div class="career-modal-inner">
+        <button class="modal-close" onclick="closeCareerModal()">✕</button>
+        <div id="career-modal-content"></div>
+      </div>
+    </div>
+
+    <!-- feedback modal -->
+    <div id="feedback-modal" class="feedback-modal" style="display:none">
+      <div class="feedback-inner" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+        <button class="feedback-close" onclick="closeFeedbackModal()">✕</button>
+        <h3 id="feedback-title">We’d love your feedback!</h3>
+        <p class="lead">Your opinion matters! Please take a moment to share your feedback. It helps us improve our content, design, and user experience.</p>
+
+        <form id="feedback-form">
+          <div class="feedback-row">
+            <input id="fb-name" type="text" placeholder="Name (optional)">
+          </div>
+          <div class="feedback-row">
+            <input id="fb-email" type="email" placeholder="Email (optional)">
+          </div>
+
+          <label style="display:block;font-weight:600;margin-top:6px">Rate your experience with us!</label>
+          <div class="rating" id="rating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+
+          <div class="feedback-row">
+            <textarea id="fb-comments" rows="4" placeholder="Tell us what we can do better."></textarea>
+          </div>
+
+          <div class="feedback-actions">
+            <button type="button" class="btn outline" onclick="closeFeedbackModal()">Cancel</button>
+            <button type="submit" class="btn">Share Your Thoughts</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- feedback list modal (admin/viewer) -->
+    <div id="feedback-list-modal" class="feedback-modal" style="display:none">
+      <div class="feedback-inner" role="dialog" aria-modal="true" aria-labelledby="feedback-list-title">
+        <button class="feedback-close" onclick="closeFeedbackList()">✕</button>
+        <h3 id="feedback-list-title">Feedback Responses</h3>
+        <div id="feedback-list-content" style="max-height:420px;overflow:auto;margin-top:8px;padding-right:6px"></div>
+        <div style="margin-top:12px;text-align:right"><button class="btn outline" onclick="clearAllFeedback()">Delete All</button> <button class="btn" onclick="closeFeedbackList()">Close</button></div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ✅ JAVASCRIPT -->
+  <script>
+    function showScreen(id) {
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    const openLogin = () => showScreen("login-screen");
+    const goHome    = () => showScreen("home-screen");
+    const goDash    = () => showScreen("dashboard-screen");
+
+    function showForm(formType, ev) {
+      document.querySelectorAll(".form").forEach(f => f.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById(formType).classList.add("active");
+      if (ev && ev.currentTarget) ev.currentTarget.classList.add("active");
+    }
+
+    document.getElementById("signin").addEventListener("submit", e => {
+      e.preventDefault();
+      // on successful sign in show dashboard
+      goDash();
+    });
+
+    document.getElementById("signup").addEventListener("submit", e => {
+      e.preventDefault();
+      // create account (stub) then dashboard
+      goDash();
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", () => goHome());
+
+    /* ---------------------- Assessment engine ---------------------- */
+    // small sample tests; you can expand questions later
+    const tests = {
+      personality: {
+        title: 'Personality Test',
+        // Replaced with 5 career-focused MCQs (options a-d). Each choice maps to a broad category.
+        questions: [
+          {
+            id: 1,
+            text: 'Which activity do you enjoy the most?',
+            choices: [
+              { key: 'a', label: 'Solving puzzles', category: 'Investigative' },
+              { key: 'b', label: 'Designing or drawing', category: 'Artistic' },
+              { key: 'c', label: 'Helping others', category: 'Social' },
+              { key: 'd', label: 'Operating machines or tools', category: 'Realistic' }
+            ]
+          },
+          {
+            id: 2,
+            text: 'What type of job environment do you prefer?',
+            choices: [
+              { key: 'a', label: 'Office with computers', category: 'Investigative' },
+              { key: 'b', label: 'Creative studio', category: 'Artistic' },
+              { key: 'c', label: 'Hospitals or social services', category: 'Social' },
+              { key: 'd', label: 'Outdoor or workshops', category: 'Realistic' }
+            ]
+          },
+          {
+            id: 3,
+            text: 'Which skill best describes you?',
+            choices: [
+              { key: 'a', label: 'Analytical and logical', category: 'Investigative' },
+              { key: 'b', label: 'Artistic and expressive', category: 'Artistic' },
+              { key: 'c', label: 'Empathetic and supportive', category: 'Social' },
+              { key: 'd', label: 'Practical and hands-on', category: 'Realistic' }
+            ]
+          },
+          {
+            id: 4,
+            text: 'What motivates you the most in a career?',
+            choices: [
+              { key: 'a', label: 'Innovation and technology', category: 'Investigative' },
+              { key: 'b', label: 'Creating something new', category: 'Artistic' },
+              { key: 'c', label: 'Making a positive impact', category: 'Social' },
+              { key: 'd', label: 'Building or repairing things', category: 'Realistic' }
+            ]
+          },
+          {
+            id: 5,
+            text: 'What subject do you enjoy the most?',
+            choices: [
+              { key: 'a', label: 'Math or Science', category: 'Investigative' },
+              { key: 'b', label: 'Art or Literature', category: 'Artistic' },
+              { key: 'c', label: 'Psychology or Biology', category: 'Social' },
+              { key: 'd', label: 'Vocational/Technical subjects', category: 'Realistic' }
+            ]
+          }
+        ],
+        categories: ['Investigative','Artistic','Social','Realistic','Enterprising','Conventional']
+      },
+      skills: {
+        title: 'Skills Evaluation',
+        questions: [
+          { id: 1, text: 'I can write clean, maintainable code.', skill: 'Programming' },
+          { id: 2, text: 'I can explain complex ideas clearly to others.', skill: 'Communication' },
+          { id: 3, text: 'I can analyze data and draw insights.', skill: 'Data Analysis' },
+          { id: 4, text: 'I can design user-friendly interfaces.', skill: 'Design' }
+        ]
+      },
+      interests: {
+        title: 'Interests Survey',
+        questions: [
+          { id: 1, text: 'I enjoy learning about technology and how things work.', interest: 'Technology' },
+          { id: 2, text: 'I enjoy working on team projects and helping people.', interest: 'Teamwork' },
+          { id: 3, text: 'I enjoy analyzing numbers and trends.', interest: 'Analytics' }
+        ]
+      }
+    };
+
+    // Updated career database
+    const careers = [
+      {
+        id: 'uiux_designer',
+        title: 'UI/UX Designer',
+        category: 'Design',
+        description: 'Designs user-friendly interfaces and experiences with research-led workflows.',
+        requiredSkills: ['Wireframing','Prototyping','Design thinking'],
+        tools: ['Figma','Adobe XD'],
+        education: 'Design degree / Portfolio',
+        growth: 'High',
+        salary: '$50k-$95k',
+        courses: ['https://www.interaction-design.org','https://www.udemy.com/topic/ux-design/'],
+        icon: '🎨'
+      },
+      {
+        id: 'web_dev',
+        title: 'Web Developer',
+        category: 'Technology',
+        description: 'Creates and maintains websites using front-end and back-end technologies.',
+        requiredSkills: ['HTML','CSS','JavaScript','React'],
+        tools: ['Chrome DevTools','Node.js'],
+        education: 'Diploma/Degree + Projects',
+        growth: 'High',
+        salary: '$55k-$110k',
+        courses: ['https://www.codecademy.com','https://www.freecodecamp.org'],
+        icon: '🌐'
+      },
+      {
+        id: 'mobile_dev',
+        title: 'Mobile App Developer',
+        category: 'Technology',
+        description: 'Builds Android and iOS applications using native or cross-platform tools.',
+        requiredSkills: ['Flutter','Kotlin','Swift'],
+        tools: ['Android Studio','Xcode','Flutter'],
+        education: 'BSc / Certifications / Portfolio',
+        growth: 'High',
+        salary: '$65k-$130k',
+        courses: ['https://flutter.dev/docs','https://developer.android.com/courses'],
+        icon: '📱'
+      },
+      {
+        id: 'data_analyst',
+        title: 'Data Analyst',
+        category: 'Data',
+        description: 'Analyzes data to produce insights for business decisions.',
+        requiredSkills: ['Data Analysis','Programming','SQL'],
+        tools: ['Python','Pandas','Tableau'],
+        education: 'BSc Data Science / Statistics',
+        growth: 'High',
+        salary: '$60k-$110k',
+        courses: ['https://www.coursera.org','https://www.edx.org'],
+        icon: '📊'
+      },
+      {
+        id: 'ux_designer',
+        title: 'UX Researcher',
+        category: 'Design',
+        description: 'Conducts user research to inform product and design decisions.',
+        requiredSkills: ['User Research','Usability Testing','Interviews'],
+        tools: ['Lookback','UserTesting'],
+        education: 'Psychology / HCI / Design',
+        growth: 'Medium',
+        salary: '$50k-$95k',
+        courses: ['https://www.interaction-design.org'],
+        icon: '🔍'
+      },
+      {
+        id: 'project_manager',
+        title: 'Project Manager',
+        category: 'Management',
+        description: 'Coordinates teams and ensures projects are delivered on time.',
+        requiredSkills: ['Communication','Leadership','Planning'],
+        tools: ['Jira','Trello'],
+        education: 'Any degree + certs',
+        growth: 'Medium',
+        salary: '$65k-$120k',
+        courses: ['https://www.pmi.org'],
+        icon: '📈'
+      },
+      {
+        id: 'devops_engineer',
+        title: 'DevOps Engineer',
+        category: 'Technology',
+        description: 'Implements CI/CD pipelines and cloud infrastructure automation.',
+        requiredSkills: ['CI/CD','Scripting','Cloud'],
+        tools: ['Docker','Kubernetes','AWS'],
+        education: 'BSc / Certifications',
+        growth: 'High',
+        salary: '$80k-$150k',
+        courses: ['https://www.aws.training','https://www.udemy.com/topic/devops/'],
+        icon: '⚙️'
+      },
+      {
+        id: 'qa_engineer',
+        title: 'QA Engineer',
+        category: 'Quality',
+        description: 'Ensures software quality through testing and automation.',
+        requiredSkills: ['Testing','Automation','Attention to detail'],
+        tools: ['Selenium','Cypress'],
+        education: 'Degree / Certifications',
+        growth: 'Medium',
+        salary: '$45k-$90k',
+        courses: ['https://www.udemy.com/topic/software-testing/'],
+        icon: '🧪'
+      },
+      {
+        id: 'data_scientist',
+        title: 'Data Scientist',
+        category: 'Data',
+        description: 'Builds models to extract insights and predictions from data.',
+        requiredSkills: ['Machine Learning','Statistics','Programming'],
+        tools: ['Python','scikit-learn','TensorFlow'],
+        education: 'MSc / BSc Data Science',
+        growth: 'High',
+        salary: '$90k-$160k',
+        courses: ['https://www.coursera.org/specializations/machine-learning'],
+        icon: '🤖'
+      }
+    ];
+
+  // expose careers globally so other scripts (dashboard, filter init) can access them
+  window.careers = careers;
+
+    // runtime state
+    let currentTest = null;
+    let currentIndex = 0;
+    let answers = []; // per-question selected value (0..2)
+    let resultsStore = {};
+
+    function startAssessment(testKey) {
+      currentTest = tests[testKey];
+      if (!currentTest) return alert('Test not found');
+      currentIndex = 0;
+      answers = new Array(currentTest.questions.length).fill(null);
+      showScreen('assessment-screen');
+      document.getElementById('test-title').innerText = currentTest.title;
+      renderQuestion();
+      updateProgress();
+    }
+
+    function renderQuestion() {
+      const area = document.getElementById('question-area');
+      const q = currentTest.questions[currentIndex];
+      const qNum = currentIndex + 1;
+      const total = currentTest.questions.length;
+      // If question has explicit choices (MCQ), render those, otherwise render Agree/Neutral/Disagree scale
+      if (q.choices && Array.isArray(q.choices)) {
+        const buttons = q.choices.map(c=>`<button class="option" data-value="${c.key}" onclick="selectAnswer('${c.key}')">${c.key}) ${c.label}</button>`).join('');
+        area.innerHTML = `
+          <div class="question-card">
+            <div class="q-header">Question ${qNum} of ${total}</div>
+            <div class="q-text">${q.text}</div>
+            <div class="options">${buttons}</div>
+          </div>
+        `;
+      } else {
+        area.innerHTML = `
+          <div class="question-card">
+            <div class="q-header">Question ${qNum} of ${total}</div>
+            <div class="q-text">${q.text}</div>
+            <div class="options">
+              <button class="option" data-value="2" onclick="selectAnswer(2)">Agree</button>
+              <button class="option" data-value="1" onclick="selectAnswer(1)">Neutral</button>
+              <button class="option" data-value="0" onclick="selectAnswer(0)">Disagree</button>
+            </div>
+          </div>
+        `;
+      }
+      // mark selected if exists
+      const sel = answers[currentIndex];
+      if (sel !== null) {
+        const options = area.querySelectorAll('.option');
+        options.forEach(o=>{ if (o.dataset.value === String(sel)) o.classList.add('selected'); });
+      }
+      document.getElementById('prev-btn').style.display = currentIndex === 0 ? 'none' : 'inline-block';
+      document.getElementById('next-btn').style.display = (currentIndex === currentTest.questions.length -1) ? 'none' : 'inline-block';
+      document.getElementById('submit-btn').style.display = (currentIndex === currentTest.questions.length -1) ? 'inline-block' : 'none';
+    }
+
+    function selectAnswer(value) {
+      answers[currentIndex] = value;
+      // visually mark
+      const options = document.querySelectorAll('#question-area .option');
+      options.forEach(o => o.classList.remove('selected'));
+      options.forEach(o => { if (o.dataset.value === String(value)) o.classList.add('selected'); });
+      updateProgress();
+    }
+
+    function nextQuestion() {
+      if (currentIndex < currentTest.questions.length -1) {
+        currentIndex++;
+        renderQuestion();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+      }
+    }
+
+    function updateProgress() {
+      const filled = answers.filter(a => a !== null).length;
+      const total = currentTest ? currentTest.questions.length : 1;
+      const pct = Math.round((filled / total) * 100);
+      const fillEl = document.getElementById('progress-fill');
+      if (fillEl) fillEl.style.width = pct + '%';
+    }
+
+    function submitTest() {
+      // simple validation: ensure all answered
+      if (answers.some(a => a === null)) return alert('Please answer all questions before submitting.');
+      // evaluate based on test type
+      const key = Object.keys(tests).find(k => tests[k] === currentTest);
+      const res = evaluateTest(key, currentTest, answers);
+      resultsStore[key] = res;
+      // show results in dashboard
+      showResultsOnDashboard();
+      goDash();
+    }
+
+    function evaluateTest(key, test, answersArr) {
+      if (key === 'personality') {
+        const scores = {};
+        // initialize categories
+        test.categories.forEach(c => scores[c]=0);
+        test.questions.forEach((q,i) => {
+          const ans = answersArr[i];
+          // if MCQ answered with a key, map to category
+          if (q.choices && ans !== null) {
+            const choice = q.choices.find(c=>c.key === String(ans));
+            if (choice && choice.category) scores[choice.category] = (scores[choice.category]||0) + 1;
+          } else if (typeof ans === 'number' && q.category) {
+            // fallback for numeric scale: add numeric value
+            scores[q.category] = (scores[q.category]||0) + ans;
+          }
+        });
+        // sort categories
+        const ranked = Object.keys(scores).map(k=>({k,score:scores[k]})).sort((a,b)=>b.score-a.score);
+        return {scores, ranked};
+      }
+      if (key === 'skills') {
+        const skillScores = {};
+        test.questions.forEach((q,i) => {
+          skillScores[q.skill] = (skillScores[q.skill]||0) + answersArr[i];
+        });
+        return {skillScores};
+      }
+      if (key === 'interests') {
+        const intScores = {};
+        test.questions.forEach((q,i) => {
+          intScores[q.interest] = (intScores[q.interest]||0) + answersArr[i];
+        });
+        return {intScores};
+      }
+      return {};
+    }
+
+    function showResultsOnDashboard() {
+      // show a summary in dashboard-screen
+      const dash = document.getElementById('dashboard-screen');
+      // create or replace a results area
+      let resultsArea = document.getElementById('results-summary');
+      if (!resultsArea) {
+        const container = dash.querySelector('.dash-container');
+        resultsArea = document.createElement('div');
+        resultsArea.id = 'results-summary';
+        resultsArea.className = 'results-summary';
+        container.insertBefore(resultsArea, container.firstChild);
+      }
+      // personality
+      let html = '<h2>Your Assessment Results</h2>';
+      if (resultsStore.personality) {
+        const ranked = resultsStore.personality.ranked.slice(0,2).map(r=>r.k + ' ('+r.score+')').join(', ');
+        html += `<div class=\"result-block\"><h3>Personality</h3><p>Top types: ${ranked}</p></div>`;
+      }
+      if (resultsStore.skills) {
+        const topSkills = Object.keys(resultsStore.skills.skillScores).sort((a,b)=>resultsStore.skills.skillScores[b]-resultsStore.skills.skillScores[a]).slice(0,3);
+        html += `<div class=\"result-block\"><h3>Skills</h3><p>Top skills: ${topSkills.join(', ')}</p></div>`;
+      }
+      if (resultsStore.interests) {
+        const topInts = Object.keys(resultsStore.interests.intScores).sort((a,b)=>resultsStore.interests.intScores[b]-resultsStore.interests.intScores[a]).slice(0,3);
+        html += `<div class=\"result-block\"><h3>Interests</h3><p>Top interests: ${topInts.join(', ')}</p></div>`;
+      }
+      // recommendations (simple matching)
+      const recommended = recommendCareers();
+      if (recommended.length) {
+        html += '<div class=\"result-block\"><h3>Recommended Careers</h3><ul>' + recommended.map(c=>`<li><strong>${c.title}</strong> — ${c.education} — ${c.salary}</li>`).join('') + '</ul></div>';
+      }
+      html += '<div class=\"result-actions\"><button class=\"btn\" onclick=\"retakeAll()\">Retake Tests</button> <button class=\"btn outline\" onclick=\"downloadReport()\">Download Report (PDF)</button> <button class=\"btn outline\" onclick=\"showScreen(\\\'career-explorer-screen\\\')\">Explore Careers</button></div>';
+      resultsArea.innerHTML = html;
+    }
+
+    function recommendCareers() {
+      // choose top skills from skills test if exists, otherwise from personality mapping
+      let skillsList = [];
+      if (resultsStore.skills) {
+        skillsList = Object.keys(resultsStore.skills.skillScores).sort((a,b)=>resultsStore.skills.skillScores[b]-resultsStore.skills.skillScores[a]).slice(0,3);
+      }
+      const matches = careers.map(c => {
+        const common = c.requiredSkills.filter(s=>skillsList.includes(s)).length;
+        return {career:c, score:common};
+      }).filter(r=>r.score>0).sort((a,b)=>b.score-a.score).map(r=>r.career);
+      // fallback: if no skill matches, recommend top 2 careers
+      return matches.length ? matches : careers.slice(0,2);
+    }
+
+    function retakeAll() {
+      resultsStore = {};
+      const area = document.getElementById('results-summary');
+      if (area) area.remove();
+      alert('All results cleared. You can retake tests now.');
+    }
+
+    // PDF download using jsPDF (via CDN loaded below)
+    function downloadReport() {
+      try {
+        if (!window.jspdf) {
+          alert('PDF library not loaded. Please try again in a moment.');
+          return;
+        }
+        const doc = new window.jspdf.jsPDF();
+        let y = 20;
+        doc.setFontSize(16);
+        doc.text('CareerPath — Assessment Report', 14, y);
+        y += 10;
+        doc.setFontSize(12);
+        if (resultsStore.personality) {
+          doc.text('Personality:', 14, y); y+=7;
+          resultsStore.personality.ranked.slice(0,3).forEach(r=>{ doc.text(`${r.k} — ${r.score}`, 18, y); y+=7; });
+        }
+        if (resultsStore.skills) {
+          y += 4; doc.text('Skills:', 14, y); y+=7;
+          Object.keys(resultsStore.skills.skillScores).forEach(k=>{ doc.text(`${k} — ${resultsStore.skills.skillScores[k]}`, 18, y); y+=7; });
+        }
+        if (resultsStore.interests) {
+          y += 4; doc.text('Interests:', 14, y); y+=7;
+          Object.keys(resultsStore.interests.intScores).forEach(k=>{ doc.text(`${k} — ${resultsStore.interests.intScores[k]}`, 18, y); y+=7; });
+        }
+        doc.save('careerpath-report.pdf');
+      } catch (error) {
+        console.error('PDF generation failed:', error);
+        alert('Failed to generate PDF. Please try again.');
+      }
+    }
+
+    /* Career Explorer rendering */
+    function renderCareerExplorer() {
+      const list = document.getElementById('career-list');
+      list.innerHTML = careers.map(c=>`
+        <div class=\"career-item\">
+          <h3>${c.title}</h3>
+          <p>${c.education} • ${c.salary} • Growth: ${c.growth}</p>
+          <p><strong>Skills:</strong> ${c.requiredSkills.join(', ')}</p>
+          <p><strong>Courses:</strong> ${c.courses.map(u=>`<a href=\"${u}\" target=\"_blank\">${u}</a>`).join(' | ')}</p>
+        </div>
+      `).join('');
+    }
+
+    // populate career explorer when shown
+    document.addEventListener('visibilitychange', ()=>{});
+    // render explorer immediately so it's ready
+    renderCareerExplorer();
+
+    // helper: open the career explorer screen and show all careers
+    function openAllCareers(){
+      // switch to the career explorer screen
+      try { showScreen('career-explorer-screen'); } catch(e) { console.warn('showScreen not available', e); }
+      // ensure filters are initialized and renderer runs
+      try { if (typeof populateExplorerFilters === 'function') populateExplorerFilters(); } catch(e){}
+      try { renderCareerExplorer(); } catch(e){}
+      // scroll to top of explorer for best UX
+      setTimeout(()=>{ const el = document.getElementById('career-explorer-screen'); if (el) el.scrollIntoView({behavior:'smooth'}); }, 50);
+    }
+
+    // load jsPDF from CDN for PDF export (safe to load from CDN)
+    (function loadJsPDF(){
+      try {
+        const s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+        s.onload = ()=> console.log('jsPDF loaded');
+        s.onerror = ()=> console.warn('jsPDF failed to load');
+        document.head.appendChild(s);
+      } catch (error) {
+        console.error('Error loading jsPDF:', error);
+      }
+    })();
+
+    /* ---------------- Career Explorer logic: search, filters, modal ---------------- */
+    // populate filters and wire search
+    function populateExplorerFilters() {
+      const categoryEl = document.getElementById('category-filter');
+      const skillEl = document.getElementById('skill-filter');
+      // collect categories and skills
+      const categories = new Set();
+      const skills = new Set();
+      careers.forEach(c=>{
+        // attempt to derive a category from title or education (simple); you can replace with explicit category field
+        if (c.category) categories.add(c.category);
+        (c.requiredSkills||[]).forEach(s=>skills.add(s));
+      });
+      // add categories
+      categories.forEach(cat=>{
+        const o = document.createElement('option'); o.value = cat; o.textContent = cat; categoryEl.appendChild(o);
+      });
+      // add skills
+      skills.forEach(sk=>{
+        const o = document.createElement('option'); o.value = sk; o.textContent = sk; skillEl.appendChild(o);
+      });
+      // wire search button and inputs
+      document.getElementById('career-search-btn').addEventListener('click', ()=> renderCareerExplorer());
+      document.getElementById('career-search').addEventListener('keyup', (e)=>{ if (e.key === 'Enter') renderCareerExplorer(); });
+      categoryEl.addEventListener('change', ()=> renderCareerExplorer());
+      skillEl.addEventListener('change', ()=> renderCareerExplorer());
+    }
+
+    function renderCareerExplorer() {
+      const q = (document.getElementById('career-search') && document.getElementById('career-search').value || '').toLowerCase().trim();
+      const cat = document.getElementById('category-filter') ? document.getElementById('category-filter').value : '';
+      const skillFilter = document.getElementById('skill-filter') ? document.getElementById('skill-filter').value : '';
+      const list = document.getElementById('career-list');
+      const filtered = careers.filter(c=>{
+        if (q) {
+          const inText = (c.title + ' ' + (c.education||'') + ' ' + (c.requiredSkills||[]).join(' ')).toLowerCase();
+          if (!inText.includes(q)) return false;
+        }
+        if (cat && c.category !== cat) return false;
+        if (skillFilter && !(c.requiredSkills||[]).includes(skillFilter)) return false;
+        return true;
+      });
+      if (!filtered.length) {
+        list.innerHTML = '<p style="grid-column:1/-1;color:#555">No careers found. Try different filters or search terms.</p>';
+        return;
+      }
+      list.innerHTML = filtered.map(c=>{
+        return `
+          <div class="career-card">
+            <div class="career-card-top">
+              <div class="career-icon">${c.icon || '💼'}</div>
+              <div class="career-head">
+                <h3>${c.title}</h3>
+                <div class="career-meta">${c.category || ''} • ${c.growth} growth</div>
+              </div>
+            </div>
+            <p class="career-desc">${c.description || ''}</p>
+            <p class="career-small"><strong>Skills required:</strong> ${c.requiredSkills.join(', ')}</p>
+            <p class="career-small"><strong>Education path:</strong> ${c.education}</p>
+            <p class="career-small"><strong>Salary:</strong> ${c.salary}</p>
+            <div class="career-actions">
+              <button class="btn small" onclick="openCareerModal('${c.id}')">Learn More</button>
+              <a class="btn outline small" href="${c.courses && c.courses[0] || '#'}" target="_blank">Courses</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openCareerModal(id) {
+      const c = careers.find(x=>x.id===id);
+      if (!c) return;
+      const content = document.getElementById('career-modal-content');
+      content.innerHTML = `
+        <h2>${c.title}</h2>
+        <p class="career-meta">${c.category || ''} • ${c.growth} growth • <strong>${c.salary}</strong></p>
+        <p>${c.description || ''}</p>
+        <p><strong>Skills:</strong> ${c.requiredSkills.join(', ')}</p>
+        <p><strong>Education path:</strong> ${c.education}</p>
+        <p><strong>Suggested courses:</strong> ${c.courses.map(u=>`<a href="${u}" target="_blank">${u}</a>`).join(' | ')}</p>
+        <div style="margin-top:14px"><button class="btn" onclick="downloadCareerPDF('${c.id}')">Download Report</button> <button class="btn outline" onclick="closeCareerModal()">Close</button></div>
+      `;
+      document.getElementById('career-modal').style.display = 'flex';
+    }
+
+    function closeCareerModal(){ document.getElementById('career-modal').style.display = 'none'; }
+
+    function downloadCareerPDF(id) {
+      try {
+        const c = careers.find(x=>x.id===id);
+        if(!c) {
+          alert('Career not found');
+          return;
+        }
+        if (!window.jspdf) {
+          alert('PDF library not loaded. Please try again in a moment.');
+          return;
+        }
+        const doc = new window.jspdf.jsPDF();
+        let y = 20; doc.setFontSize(16); doc.text(c.title,14,y); y+=8; doc.setFontSize(12);
+        doc.text(`Category: ${c.category || 'N/A'}`,14,y); y+=7; doc.text(`Salary: ${c.salary}`,14,y); y+=7;
+        doc.text(`Education: ${c.education}`,14,y); y+=7; doc.text('Skills: ' + c.requiredSkills.join(', '),14,y); y+=10;
+        doc.save(`${c.id}-career.pdf`);
+      } catch (error) {
+        console.error('Career PDF generation failed:', error);
+        alert('Failed to generate career PDF. Please try again.');
+      }
+    }
+
+    // initialize explorer filters and render
+    populateExplorerFilters();
+    renderCareerExplorer();
+
+    /* ---------------- Feedback modal & storage ---------------- */
+    function openFeedbackModal(){
+      const m = document.getElementById('feedback-modal');
+      if (m) m.style.display = 'flex';
+      // reset form
+      const form = document.getElementById('feedback-form');
+      if (form) form.reset();
+      // reset star selection
+      const stars = document.querySelectorAll('#rating .star');
+      stars.forEach(s=>s.classList.remove('selected'));
+      // ensure form wiring
+      setupFeedbackForm();
+    }
+
+    function closeFeedbackModal(){
+      const m = document.getElementById('feedback-modal');
+      if (m) m.style.display = 'none';
+    }
+
+    function setupFeedbackForm(){
+      const stars = document.querySelectorAll('#rating .star');
+      stars.forEach(s => {
+        s.onclick = () => {
+          const val = Number(s.dataset.value || 0);
+          // mark selected up to val
+          stars.forEach(st => {
+            const v = Number(st.dataset.value || 0);
+            if (v <= val) st.classList.add('selected'); else st.classList.remove('selected');
+          });
+        };
+      });
+
+      const form = document.getElementById('feedback-form');
+      if (!form._fb_bound) {
+        form.addEventListener('submit', e=>{
+          e.preventDefault();
+          const name = document.getElementById('fb-name').value.trim();
+          const email = document.getElementById('fb-email').value.trim();
+          const comments = document.getElementById('fb-comments').value.trim();
+          const selectedStar = document.querySelector('#rating .star.selected');
+          const rating = selectedStar ? Number(selectedStar.dataset.value) : 0;
+          if (!rating) {
+            alert('Please provide a rating (1-5 stars).');
+            return;
+          }
+          if (!comments) {
+            // require a short comment to help improve the site
+            alert('Please provide a short comment describing your experience.');
+            return;
+          }
+          const entry = { name: name||null, email: email||null, rating, comments: comments||null, ts: Date.now() };
+          try {
+            const key = 'career_feedbacks';
+            const existing = JSON.parse(localStorage.getItem(key) || '[]');
+            existing.push(entry);
+            localStorage.setItem(key, JSON.stringify(existing));
+            closeFeedbackModal();
+            // small in-page confirmation (avoid blocking flow)
+            updateFeedbackSummary();
+            setTimeout(()=> alert('Thanks for your feedback — we appreciate it!'), 50);
+          } catch(err){
+            console.error('Saving feedback failed', err);
+            alert('Could not save feedback locally.');
+          }
+        });
+        form._fb_bound = true;
+      }
+    }
+
+    function updateFeedbackSummary(){
+      const key = 'career_feedbacks';
+      const list = JSON.parse(localStorage.getItem(key) || '[]');
+      const dash = document.getElementById('dashboard-screen');
+      if (!dash) return;
+      let container = dash.querySelector('#feedback-summary');
+      if (!container){
+        container = document.createElement('div');
+        container.id = 'feedback-summary';
+        container.className = 'feedback-summary';
+        const parent = dash.querySelector('.dash-container');
+        if (parent) parent.appendChild(container);
+      }
+      if (!list.length) {
+        container.innerHTML = '<strong>Feedback</strong><p style="color:#666;margin-top:6px">No feedback submitted yet.</p>' +
+          '<div style="margin-top:8px;text-align:right"><button class="btn small" onclick="openFeedbackModal()">Give Feedback</button> <button class="btn outline small" onclick="showFeedbackList()">View all</button></div>';
+        return;
+      }
+      // show a simple aggregate: count and average rating and latest comment
+      const avg = (list.reduce((s,i)=>s + (i.rating||0),0)/list.length).toFixed(1);
+      const latest = list[list.length-1];
+      container.innerHTML = `<strong>Feedback</strong><p style="color:#666;margin-top:6px">${list.length} responses — average ${avg}★</p><p style="margin-top:8px;color:#333"><em>Latest:</em> ${latest.comments? latest.comments : '<span style="color:#777">(no comment)</span>'}</p>` +
+        `<div style="margin-top:8px;text-align:right"><button class="btn small" onclick="openFeedbackModal()">Give Feedback</button> <button class="btn outline small" onclick="showFeedbackList()">View all</button></div>`;
+    }
+
+    function showFeedbackList(){
+      const key = 'career_feedbacks';
+      const list = JSON.parse(localStorage.getItem(key) || '[]');
+      const content = document.getElementById('feedback-list-content');
+      if (!content) return;
+      if (!list.length) {
+        content.innerHTML = '<p style="color:#666">No feedback available.</p>';
+      } else {
+        const rows = list.slice().reverse().map((f, idx)=>{
+          const d = new Date(f.ts || Date.now());
+          const time = d.toLocaleString();
+          const name = f.name ? `<strong>${escapeHtml(f.name)}</strong>` : '<em>Anonymous</em>';
+          const email = f.email ? `<a href="mailto:${escapeHtml(f.email)}">${escapeHtml(f.email)}</a>` : '';
+          const stars = Array.from({length:5}).map((_,i)=> i < (f.rating||0) ? '★' : '☆').join('');
+          const comment = f.comments ? `<div style="margin-top:6px;color:#333">${escapeHtml(f.comments)}</div>` : '';
+          return `<div style="padding:10px;border-bottom:1px solid #eef6ff">${name} ${email ? ' • ' + email : ''} <div style="color:#ffb020;margin-top:6px">${stars}</div><div style="color:#777;font-size:12px;margin-top:6px">${time}</div>${comment}</div>`;
+        }).join('');
+        content.innerHTML = rows;
+      }
+      document.getElementById('feedback-list-modal').style.display = 'flex';
+    }
+
+    function closeFeedbackList(){
+      const m = document.getElementById('feedback-list-modal'); if (m) m.style.display = 'none';
+    }
+
+    function clearAllFeedback(){
+      if (!confirm('Delete all feedback responses? This cannot be undone.')) return;
+      localStorage.removeItem('career_feedbacks');
+      updateFeedbackSummary();
+      const content = document.getElementById('feedback-list-content'); if (content) content.innerHTML = '<p style="color:#666">No feedback available.</p>';
+    }
+
+    // small helper to escape HTML when rendering user input
+    function escapeHtml(str){
+      if (!str) return '';
+      return String(str).replace(/[&<>"'`]/g, function(s){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;","`":"&#96;"})[s];
+      });
+    }
+
+    // initialize feedback summary at load
+    updateFeedbackSummary();
+
+  </script>
+
+  <!-- init career filters: populate category/skill selects and wire events -->
+  <script>
+    (function initCareerFilters(){
+      // DOM refs
+      const categoryEl = document.getElementById('category-filter');
+      const skillEl = document.getElementById('skill-filter');
+      const searchInput = document.getElementById('career-search');
+      const searchBtn = document.getElementById('career-search-btn');
+
+      if (!categoryEl || !skillEl || !searchInput) return;
+
+      // collect unique categories and skills from your existing `careers` array
+      const categories = new Set();
+      const skills = new Set();
+      (window.careers || []).forEach(c => {
+        if (c.category) categories.add(String(c.category));
+        (c.requiredSkills || []).forEach(s => skills.add(String(s)));
+      });
+
+      // populate selects (skip duplicates)
+      categories.forEach(cat => {
+        const o = document.createElement('option');
+        o.value = cat;
+        o.textContent = cat;
+        categoryEl.appendChild(o);
+      });
+      skills.forEach(sk => {
+        const o = document.createElement('option');
+        o.value = sk;
+        o.textContent = sk;
+        skillEl.appendChild(o);
+      });
+
+      // wire events -> use your existing renderCareerExplorer function
+      function triggerRender(){ 
+        // ensure the render function exists
+        if (typeof renderCareerExplorer === 'function') renderCareerExplorer();
+      }
+
+      searchBtn.addEventListener('click', triggerRender);
+      searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') triggerRender(); });
+      categoryEl.addEventListener('change', triggerRender);
+      skillEl.addEventListener('change', triggerRender);
+
+      // Optional: pre-fill from URL params (if helpful)
+      const params = new URLSearchParams(location.search);
+      if (params.get('q')) searchInput.value = params.get('q');
+      if (params.get('cat')) categoryEl.value = params.get('cat');
+      if (params.get('skill')) skillEl.value = params.get('skill');
+
+      // initial render (safe-guard if renderCareerExplorer expects these elements)
+      triggerRender();
+    })();
+  </script>
+
+  <!-- Floating feedback button + popup (compact alternative) -->
+  <button id="feedbackBtn" class="feedback-button" aria-label="Feedback">💬 Feedback</button>
+
+  <div id="feedbackPopup" class="feedback-popup" role="dialog" aria-modal="false" aria-hidden="true">
+    <div class="feedback-content">
+      <h3>We value your feedback!</h3>
+      <textarea id="feedbackText" placeholder="Share your thoughts..." rows="4"></textarea>
+      <div style="margin-top:8px">
+        <button id="feedbackSubmit" class="btn">Submit</button>
+        <button id="feedbackClose" class="btn outline">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function setupFloatingFeedback(){
+      const feedbackBtn = document.getElementById('feedbackBtn');
+      const feedbackPopup = document.getElementById('feedbackPopup');
+      const feedbackText = document.getElementById('feedbackText');
+      const feedbackSubmit = document.getElementById('feedbackSubmit');
+      const feedbackClose = document.getElementById('feedbackClose');
+
+      if (!feedbackBtn || !feedbackPopup) return;
+
+      function openFloating(){
+        feedbackPopup.style.display = 'block';
+        feedbackPopup.setAttribute('aria-hidden','false');
+        feedbackText && feedbackText.focus();
+      }
+      function closeFloating(){
+        feedbackPopup.style.display = 'none';
+        feedbackPopup.setAttribute('aria-hidden','true');
+      }
+
+      feedbackBtn.addEventListener('click', openFloating);
+      feedbackClose.addEventListener('click', closeFloating);
+
+      feedbackSubmit.addEventListener('click', function(){
+        const text = (feedbackText && feedbackText.value || '').trim();
+        if (!text) return alert('Please enter your feedback before submitting.');
+        // Reuse same storage key as the main feedback form
+        try {
+          const key = 'career_feedbacks';
+          const existing = JSON.parse(localStorage.getItem(key) || '[]');
+          existing.push({ name: null, email: null, rating: null, comments: text, ts: Date.now() });
+          localStorage.setItem(key, JSON.stringify(existing));
+          // update dashboard summary if present
+          if (typeof updateFeedbackSummary === 'function') updateFeedbackSummary();
+          // clear and close
+          if (feedbackText) feedbackText.value = '';
+          closeFloating();
+          setTimeout(()=> alert('Thank you for your feedback!'), 50);
+        } catch(err){
+          console.error('Feedback save failed', err);
+          alert('Could not save feedback locally.');
+        }
+      });
+
+      // close when clicking outside popup
+      document.addEventListener('click', function(e){
+        if (!feedbackPopup || !feedbackBtn) return;
+        if (feedbackPopup.style.display === 'block'){
+          if (!feedbackPopup.contains(e.target) && e.target !== feedbackBtn) closeFloating();
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    (function handleHashToDashboard(){
+      if (location.hash === '#dash-container') {
+        if (typeof showScreen === 'function') showScreen('dashboard-screen');
+        setTimeout(function(){
+          var el = document.getElementById('dash-container');
+          if (el) el.scrollIntoView({behavior:'smooth'});
+        }, 60);
+      }
+    })();
+  </script>
+
+</body>
+</html>
