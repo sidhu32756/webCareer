@@ -500,6 +500,75 @@ function closeFeedbackModal() {
   document.querySelector('.feedback-modal').style.display = 'none';
 }
 
+// Update dashboard with user info
+function updateDashboard() {
+  const user = auth.getCurrentUser();
+  if (user) {
+    const dashTitle = document.querySelector('#dash-container h1');
+    if (dashTitle) {
+      dashTitle.textContent = `Welcome back, ${user.name}!`;
+    }
+    
+    // Show admin panel if user is admin
+    if (auth.isAdmin(user.email)) {
+      showAdminPanel();
+    }
+  }
+}
+
+// Admin panel functions
+function showAdminPanel() {
+  const dashContainer = document.querySelector('#dash-container');
+  const adminPanel = document.createElement('div');
+  adminPanel.className = 'admin-panel';
+  adminPanel.innerHTML = `
+    <div class="admin-box">
+      <h3>🔧 Admin Panel</h3>
+      <p>Manage user signups and platform notifications</p>
+      <button class="btn small" onclick="showUserNotifications()">View User Signups</button>
+    </div>
+  `;
+  dashContainer.insertBefore(adminPanel, dashContainer.firstChild);
+}
+
+function showUserNotifications() {
+  const notifications = auth.getAdminNotifications();
+  const unread = notifications.filter(n => !n.read);
+  
+  const modal = document.createElement('div');
+  modal.className = 'career-modal';
+  modal.style.display = 'flex';
+  modal.innerHTML = `
+    <div class="career-modal-inner">
+      <button class="modal-close" onclick="this.parentElement.parentElement.remove()">&times;</button>
+      <h2>📧 User Signups (${unread.length} new)</h2>
+      <div style="max-height: 400px; overflow-y: auto;">
+        ${notifications.length === 0 ? '<p>No signups yet.</p>' : 
+          notifications.slice().reverse().map(n => `
+            <div class="notification-item" style="padding: 12px; border-bottom: 1px solid #eee; ${!n.read ? 'background: #f0f8ff;' : ''}">
+              <strong>${n.user.name}</strong> (${n.user.email})<br>
+              <small>Signed up: ${new Date(n.timestamp).toLocaleString()}</small>
+              ${!n.read ? '<span style="color: #0055ff; font-weight: bold;"> • NEW</span>' : ''}
+            </div>
+          `).join('')
+        }
+      </div>
+      <div style="margin-top: 16px; text-align: right;">
+        <button class="btn outline" onclick="markAllRead()">Mark All Read</button>
+        <button class="btn" onclick="this.parentElement.parentElement.parentElement.remove()">Close</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+function markAllRead() {
+  const notifications = auth.getAdminNotifications();
+  notifications.forEach(n => n.read = true);
+  localStorage.setItem('admin_notifications', JSON.stringify(notifications));
+  showMessage('All notifications marked as read', 'success');
+}
+
 // Initialize app
 document.addEventListener('DOMContentLoaded', function() {
   // Check if user is logged in

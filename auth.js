@@ -33,7 +33,43 @@ class AuthSystem {
     this.users.push(user);
     localStorage.setItem('careerpath_users', JSON.stringify(this.users));
     
+    // Send admin notification
+    this.notifyAdmin(user);
+    
     return { success: true, message: 'Account created successfully!' };
+  }
+
+  // Admin notification system
+  notifyAdmin(user) {
+    const adminEmail = 'sidheswargouda8@gmail.com';
+    const subject = 'New User Signup - CareerPath Platform';
+    const body = `New user registered on CareerPath:
+
+Name: ${user.name}
+Email: ${user.email}
+Signup Date: ${new Date(user.createdAt).toLocaleString()}
+User ID: ${user.id}`;
+    
+    // Store notification for admin dashboard
+    const notifications = JSON.parse(localStorage.getItem('admin_notifications') || '[]');
+    notifications.push({
+      id: Date.now(),
+      type: 'signup',
+      user: user,
+      timestamp: new Date().toISOString(),
+      read: false
+    });
+    localStorage.setItem('admin_notifications', JSON.stringify(notifications));
+    
+    // Create mailto link for email notification
+    const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Auto-open email client (optional)
+    try {
+      window.open(mailtoLink, '_blank');
+    } catch (e) {
+      console.log('Email notification created for admin');
+    }
   }
 
   // Sign In
@@ -66,6 +102,24 @@ class AuthSystem {
   // Get current user
   getCurrentUser() {
     return this.currentUser;
+  }
+
+  // Admin functions
+  getAdminNotifications() {
+    return JSON.parse(localStorage.getItem('admin_notifications') || '[]');
+  }
+
+  markNotificationRead(notificationId) {
+    const notifications = this.getAdminNotifications();
+    const notification = notifications.find(n => n.id === notificationId);
+    if (notification) {
+      notification.read = true;
+      localStorage.setItem('admin_notifications', JSON.stringify(notifications));
+    }
+  }
+
+  isAdmin(email) {
+    return email === 'sidheswargouda8@gmail.com';
   }
 }
 
