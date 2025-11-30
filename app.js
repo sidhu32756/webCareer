@@ -434,14 +434,67 @@ function openAllCareers() {
   requireAuth(() => {
     showScreen('career-explorer-screen');
     renderCareers();
+    setupSearchListeners();
   });
+}
+
+// Setup search and filter listeners
+function setupSearchListeners() {
+  const searchInput = document.getElementById('career-search');
+  const categorySelect = document.getElementById('category-filter');
+  const searchForm = document.getElementById('career-search-form');
+  
+  if (searchInput) {
+    searchInput.addEventListener('input', renderCareers);
+    searchInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        renderCareers();
+      }
+    });
+  }
+  
+  if (categorySelect) {
+    categorySelect.addEventListener('change', renderCareers);
+  }
+  
+  if (searchForm) {
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      renderCareers();
+    });
+  }
 }
 
 function renderCareers() {
   const careerList = document.querySelector('.career-list');
   if (!careerList) return;
   
-  careerList.innerHTML = careerData.map(career => `
+  // Get search and filter values
+  const searchTerm = document.getElementById('career-search')?.value.toLowerCase() || '';
+  const categoryFilter = document.getElementById('category-filter')?.value || '';
+  
+  // Filter careers based on search and category
+  const filteredCareers = careerData.filter(career => {
+    const matchesSearch = !searchTerm || 
+      career.title.toLowerCase().includes(searchTerm) ||
+      career.description.toLowerCase().includes(searchTerm) ||
+      career.requiredSkills.some(skill => skill.toLowerCase().includes(searchTerm)) ||
+      career.tools.some(tool => tool.toLowerCase().includes(searchTerm)) ||
+      career.category.toLowerCase().includes(searchTerm);
+    
+    const matchesCategory = !categoryFilter || career.category === categoryFilter;
+    
+    return matchesSearch && matchesCategory;
+  });
+  
+  // Display filtered results
+  if (filteredCareers.length === 0) {
+    careerList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #64748b;"><h3>No careers found</h3><p>Try different search terms or filters</p></div>';
+    return;
+  }
+  
+  careerList.innerHTML = filteredCareers.map(career => `
     <div class="career-card">
       <div class="career-card-top">
         <div class="career-icon">${career.icon}</div>

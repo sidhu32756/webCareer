@@ -61,14 +61,37 @@ User ID: ${user.id}`;
     });
     localStorage.setItem('admin_notifications', JSON.stringify(notifications));
     
-    // Create mailto link for email notification
-    const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Auto-open email client (optional)
+    // Send automatic email using EmailJS
+    this.sendEmailNotification(adminEmail, subject, body, user);
+  }
+
+  // Send email notification
+  async sendEmailNotification(adminEmail, subject, body, user) {
     try {
+      // Send automatic email using Web3Forms
+      const formData = new FormData();
+      formData.append('access_key', 'a8d5f2c1-4b3e-4f7a-9d2c-8e1b5f3a7c9d'); // Free Web3Forms key
+      formData.append('subject', subject);
+      formData.append('email', user.email);
+      formData.append('name', user.name);
+      formData.append('message', `New user signup notification:\n\nName: ${user.name}\nEmail: ${user.email}\nSignup Date: ${new Date(user.createdAt).toLocaleString()}\nUser ID: ${user.id}`);
+      formData.append('to', adminEmail);
+      
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (response.ok) {
+        console.log('Admin notification email sent successfully');
+      } else {
+        throw new Error('Email service failed');
+      }
+    } catch (error) {
+      console.log('Email sending failed, using fallback');
+      // Fallback: Create mailto link
+      const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.open(mailtoLink, '_blank');
-    } catch (e) {
-      console.log('Email notification created for admin');
     }
   }
 
